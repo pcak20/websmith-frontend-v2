@@ -1,0 +1,74 @@
+/* StatusBadge.module.css */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.text {
+  line-height: 1;
+}
+
+.default {
+  background: var(--gray-100);
+  color: var(--gray-700);
+}
+
+.default .dot {
+  background: var(--gray-500);
+}
+
+.published,
+.active {
+  background: var(--success-100);
+  color: var(--success-800);
+}
+
+.published .dot,
+.active .dot {
+  background: var(--success-500);
+}
+
+.draft,
+.pending {
+  background: var(--warning-100);
+  color: var(--warning-800);
+}
+
+.draft .dot,
+.pending .dot {
+  background: var(--warning-500);
+}
+
+.archived,
+.inactive {
+  background: var(--gray-100);
+  color: var(--gray-600);
+}
+
+.archived .dot,
+.inactive .dot {
+  background: var(--gray-400);
+}
+
+.rejected {
+  background: var(--danger-100);
+  color: var(--danger-800);
+}
+
+.rejected .dot {
+  background: var(--danger-500);
+}

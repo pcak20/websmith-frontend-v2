@@ -1,0 +1,52 @@
+/* TemplateFilters.module.css */
+.templateFilters {
+  margin-bottom: var(--space-xl);
+  padding: var(--space-lg);
+  background: white;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-xl);
+}
+
+.searchSection {
+  margin-bottom: var(--space-lg);
+}
+
+.searchInput {
+  max-width: 400px;
+}
+
+.filterSection {
+  margin-bottom: var(--space-lg);
+}
+
+.quickFilters {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.quickFilter {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius-full);
+  background: white;
+  color: var(--gray-700);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-all);
+}
+
+.quickFilter:hover {
+  background: var(--gray-50);
+  border-color: var(--gray-400);
+}
+
+.quickFilter.active {
+  background: var(--primary-100);
+  color: var(--primary-700);
+  border-color: var(--primary-300);
+}

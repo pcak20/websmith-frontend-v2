@@ -1,0 +1,43 @@
+/* LoadingState.module.css */
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3xl) var(--space-lg);
+  text-align: center;
+  color: var(--gray-500);
+}
+
+.small {
+  padding: var(--space-lg);
+}
+
+.default {
+  padding: var(--space-2xl) var(--space-lg);
+}
+
+.large {
+  padding: var(--space-3xl) var(--space-xl);
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+  color: var(--primary-500);
+  margin-bottom: var(--space-md);
+}
+
+.message {
+  margin: 0;
+  color: var(--gray-600);
+  font-weight: 500;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

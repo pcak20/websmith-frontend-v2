@@ -1,0 +1,945 @@
+/* Order Tracking Page Styles */
+.order-tracking-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #f9fafb;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+.restaurant-header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 24px;
+  font-weight: 800;
+  color: #d97706;
+}
+
+.main-nav {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: #374151;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.main-nav a:hover {
+  color: #d97706;
+}
+
+.refresh-btn {
+  background: white;
+  border: 2px solid #e5e7eb;
+  color: #6b7280;
+  border-radius: 8px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.refresh-btn:hover {
+  border-color: #d97706;
+  color: #d97706;
+}
+
+/* Main Content */
+.tracking-main {
+  padding: 120px 0 60px;
+}
+
+.tracking-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Order Header */
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  background: white;
+  padding: 32px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.order-title h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.order-time {
+  color: #6b7280;
+  font-size: 1.1rem;
+}
+
+.order-status-badge {
+  text-align: right;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: 700;
+  text-transform: capitalize;
+  position: relative;
+}
+
+.status-indicator.confirmed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-indicator.preparing {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-indicator.ready {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.status-indicator.out_for_delivery {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.status-indicator.delivered {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Layout */
+.tracking-layout {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 40px;
+}
+
+/* Left Column */
+.tracking-left {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Current Status */
+.current-status {
+  background: white;
+  padding: 32px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.status-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.status-info h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.status-info p {
+  color: #6b7280;
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+}
+
+.estimated-time {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #d97706;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.estimated-time svg {
+  color: #d97706;
+}
+
+/* Progress Timeline */
+.progress-timeline {
+  background: white;
+  padding: 32px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.progress-timeline h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #1f2937;
+  margin-bottom: 24px;
+}
+
+.timeline {
+  position: relative;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #e5e7eb;
+}
+
+.timeline-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding-bottom: 32px;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-marker {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  border: 3px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  flex-shrink: 0;
+  z-index: 1;
+  position: relative;
+}
+
+.timeline-item.completed .timeline-marker {
+  background: #10b981;
+  border-color: #10b981;
+  color: white;
+}
+
+.timeline-item.active .timeline-marker {
+  background: #d97706;
+  border-color: #d97706;
+  color: white;
+  animation: glow 2s infinite;
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(217, 119, 6, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(217, 119, 6, 0);
+  }
+}
+
+.timeline-content {
+  flex: 1;
+  padding-top: 8px;
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.timeline-header h4 {
+  font-weight: 700;
+  color: #1f2937;
+  font-size: 1.1rem;
+}
+
+.timeline-time {
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.timeline-content p {
+  color: #6b7280;
+  margin-bottom: 12px;
+}
+
+.chef-activity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #fef3c7;
+  border-radius: 8px;
+  color: #92400e;
+  font-weight: 600;
+}
+
+.cooking-animation {
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Delivery Information */
+.delivery-info,
+.pickup-info {
+  background: white;
+  padding: 32px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.delivery-info h3,
+.pickup-info h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #1f2937;
+  margin-bottom: 24px;
+}
+
+.delivery-address,
+.pickup-location {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding: 20px;
+  background: #f9fafb;
+  border-radius: 12px;
+}
+
+.delivery-address svg,
+.pickup-location svg {
+  color: #d97706;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.address-label,
+.location-label {
+  font-weight: 600;
+  color: #374151;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.address-value,
+.location-value {
+  color: #6b7280;
+  display: block;
+}
+
+.restaurant-phone {
+  color: #6b7280;
+  font-size: 14px;
+  display: block;
+  margin-top: 4px;
+}
+
+/* Driver Information */
+.driver-info {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 24px;
+}
+
+.driver-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  color: #374151;
+  font-weight: 600;
+}
+
+.driver-header svg {
+  color: #d97706;
+}
+
+.driver-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: #f9fafb;
+  border-radius: 12px;
+}
+
+.driver-profile {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.driver-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #d97706;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.driver-data {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.driver-name {
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.driver-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #fbbf24;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.driver-vehicle {
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.driver-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.contact-btn,
+.message-btn {
+  padding: 8px 12px;
+  border: 2px solid #d97706;
+  background: white;
+  color: #d97706;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.contact-btn:hover,
+.message-btn:hover {
+  background: #d97706;
+  color: white;
+}
+
+/* Pickup Ready */
+.pickup-ready {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: #dcfce7;
+  border: 2px solid #10b981;
+  border-radius: 12px;
+}
+
+.ready-indicator {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #10b981;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ready-message h4 {
+  font-weight: 700;
+  color: #166534;
+  margin-bottom: 4px;
+}
+
+.ready-message p {
+  color: #166534;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* Right Column */
+.tracking-right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: fit-content;
+  position: sticky;
+  top: 140px;
+}
+
+/* Order Summary Card */
+.order-summary-card {
+  background: white;
+  padding: 24px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.order-summary-card h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #1f2937;
+  margin-bottom: 20px;
+}
+
+.order-items {
+  margin-bottom: 20px;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 12px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.order-item:last-child {
+  border-bottom: none;
+}
+
+.item-details {
+  flex: 1;
+}
+
+.item-name {
+  font-weight: 600;
+  color: #374151;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.item-quantity {
+  color: #6b7280;
+  font-size: 14px;
+  display: block;
+}
+
+.item-savings {
+  color: #10b981;
+  font-size: 12px;
+  font-weight: 600;
+  display: block;
+  margin-top: 2px;
+}
+
+.item-price {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.price-breakdown {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 16px;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.total-row {
+  border-top: 2px solid #e5e7eb;
+  padding-top: 12px;
+  margin-top: 8px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #1f2937;
+}
+
+/* Restaurant Info Card */
+.restaurant-info-card {
+  background: white;
+  padding: 24px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.restaurant-info-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 16px;
+}
+
+.restaurant-info-card h3 svg {
+  color: #d97706;
+}
+
+.restaurant-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.detail {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.detail svg {
+  color: #d97706;
+}
+
+.restaurant-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-restaurant,
+.order-again {
+  background: white;
+  border: 2px solid #d97706;
+  color: #d97706;
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.contact-restaurant:hover,
+.order-again:hover {
+  background: #d97706;
+  color: white;
+}
+
+/* Help Card */
+.help-card {
+  background: white;
+  padding: 24px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.help-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 16px;
+}
+
+.help-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.help-option {
+  background: none;
+  border: none;
+  color: #6b7280;
+  padding: 12px 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.help-option:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.help-option svg {
+  color: #d97706;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .tracking-layout {
+    grid-template-columns: 1fr 320px;
+    gap: 32px;
+  }
+
+  .current-status {
+    padding: 24px;
+  }
+
+  .progress-timeline,
+  .delivery-info,
+  .pickup-info {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-nav {
+    display: none;
+  }
+
+  .order-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 24px;
+  }
+
+  .order-header h1 {
+    font-size: 2rem;
+  }
+
+  .tracking-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .tracking-right {
+    position: static;
+    order: -1;
+  }
+
+  .current-status {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+
+  .status-icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .timeline-item {
+    padding-bottom: 24px;
+  }
+
+  .timeline-marker {
+    width: 36px;
+    height: 36px;
+  }
+
+  .driver-details {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .driver-actions {
+    justify-content: center;
+  }
+
+  .pickup-ready {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .tracking-main {
+    padding: 100px 0 40px;
+  }
+
+  .order-header {
+    padding: 20px;
+    margin: 0 -4px;
+    border-radius: 16px;
+  }
+
+  .order-header h1 {
+    font-size: 1.75rem;
+  }
+
+  .current-status,
+  .progress-timeline,
+  .delivery-info,
+  .pickup-info,
+  .order-summary-card,
+  .restaurant-info-card,
+  .help-card {
+    padding: 20px;
+    margin: 0 -4px;
+    border-radius: 16px;
+  }
+
+  .timeline::before {
+    left: 18px;
+  }
+
+  .timeline-marker {
+    width: 32px;
+    height: 32px;
+  }
+
+  .timeline-content {
+    padding-top: 4px;
+  }
+
+  .timeline-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .timeline-header h4 {
+    font-size: 1rem;
+  }
+
+  .driver-profile {
+    gap: 12px;
+  }
+
+  .driver-avatar {
+    width: 40px;
+    height: 40px;
+  }
+
+  .driver-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .contact-btn,
+  .message-btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .restaurant-actions {
+    gap: 8px;
+  }
+
+  .help-options {
+    gap: 4px;
+  }
+
+  .help-option {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .estimated-time {
+    font-size: 14px;
+  }
+
+  .status-info h2 {
+    font-size: 1.3rem;
+  }
+
+  .status-info p {
+    font-size: 1rem;
+  }
+}

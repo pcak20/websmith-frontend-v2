@@ -1,0 +1,29 @@
+/* TemplateGrid.module.css */
+.templateGrid {
+  gap: var(--space-lg);
+}
+
+.autoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.grid1 {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}

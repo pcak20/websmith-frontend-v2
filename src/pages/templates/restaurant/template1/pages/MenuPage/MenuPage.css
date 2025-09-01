@@ -1,0 +1,1238 @@
+/* Menu Page Styles */
+.menu-page {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+.restaurant-header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 24px;
+  font-weight: 800;
+  color: #d97706;
+}
+
+.main-nav {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: #374151;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.main-nav a:hover {
+  color: #d97706;
+}
+
+.cart-btn {
+  background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.cart-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(217, 119, 6, 0.3);
+}
+
+.cart-count {
+  background: #dc2626;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Menu Hero */
+.menu-hero {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d1b0e 50%, #1a1a1a 100%);
+  color: white;
+  padding: 120px 0 60px;
+  text-align: center;
+}
+
+.menu-hero-content h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.menu-hero-content p {
+  font-size: 1.2rem;
+  color: #e5e7eb;
+  margin-bottom: 40px;
+}
+
+.menu-controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.search-box {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-box svg {
+  position: absolute;
+  left: 16px;
+  color: #6b7280;
+  z-index: 1;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 16px 16px 16px 48px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 16px;
+  backdrop-filter: blur(10px);
+}
+
+.search-box input::placeholder {
+  color: #d1d5db;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: #d97706;
+}
+
+.filter-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+}
+
+.filter-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.filter-btn.active {
+  background: #d97706;
+  border-color: #d97706;
+}
+
+/* Filters Panel */
+.filters-panel {
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 24px 0;
+}
+
+.filters-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 32px;
+  align-items: end;
+}
+
+.filter-group h4 {
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 12px;
+}
+
+.sort-select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  background: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.sort-select:focus {
+  outline: none;
+  border-color: #d97706;
+}
+
+.dietary-filters {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.dietary-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+  transition: all 0.2s ease;
+}
+
+.dietary-btn:hover,
+.dietary-btn.active {
+  background: #d97706;
+  color: white;
+  border-color: #d97706;
+}
+
+.price-range {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.price-slider {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: #e5e7eb;
+  outline: none;
+  /* -webkit-appearance: none; */
+}
+
+.price-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #d97706;
+  cursor: pointer;
+}
+
+.price-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #d97706;
+  cursor: pointer;
+  border: none;
+}
+
+.clear-filters {
+  background: #dc2626;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.clear-filters:hover {
+  background: #b91c1c;
+}
+
+/* Menu Categories */
+.menu-categories {
+  padding: 32px 0;
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 80px;
+  z-index: 100;
+}
+
+.categories-scroll {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.categories-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+
+.categories-scroll::-webkit-scrollbar-track {
+  background: #f3f4f6;
+  border-radius: 2px;
+}
+
+.categories-scroll::-webkit-scrollbar-thumb {
+  background: #d97706;
+  border-radius: 2px;
+}
+
+.category-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #6b7280;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  min-width: fit-content;
+}
+
+.category-btn:hover,
+.category-btn.active {
+  background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+  color: white;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+}
+
+.item-count {
+  background: rgba(107, 114, 128, 0.2);
+  color: currentColor;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+.category-btn.active .item-count {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Menu Items */
+.menu-items {
+  padding: 60px 0;
+  background: white;
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.menu-header h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1f2937;
+}
+
+.results-count {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.dishes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 32px;
+}
+
+.dish-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.dish-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.badge.popular {
+  background: #dc2626;
+  color: white;
+}
+
+.badge.new {
+  background: #10b981;
+  color: white;
+}
+
+.badge.sale {
+  background: #f59e0b;
+  color: white;
+}
+
+.dish-image {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.favorite-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #6b7280;
+  transition: all 0.2s ease;
+  z-index: 3;
+}
+
+.favorite-btn:hover,
+.favorite-btn.active {
+  background: white;
+  color: #dc2626;
+  transform: scale(1.1);
+}
+
+/* Food Images - Placeholder Styles */
+.food-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.food-image.margherita-pizza {
+  background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+  background-image: radial-gradient(
+      circle at 30% 40%,
+      rgba(255, 255, 255, 0.8) 8px,
+      transparent 8px
+    ),
+    radial-gradient(
+      circle at 60% 30%,
+      rgba(34, 197, 94, 0.6) 6px,
+      transparent 6px
+    ),
+    radial-gradient(
+      circle at 80% 60%,
+      rgba(255, 255, 255, 0.7) 10px,
+      transparent 10px
+    ),
+    radial-gradient(
+      circle at 20% 70%,
+      rgba(34, 197, 94, 0.5) 7px,
+      transparent 7px
+    );
+}
+
+.food-image.pepperoni-pizza {
+  background: linear-gradient(135deg, #dc2626 0%, #7f1d1d 100%);
+  background-image: radial-gradient(
+      circle at 25% 25%,
+      rgba(139, 69, 19, 0.8) 6px,
+      transparent 6px
+    ),
+    radial-gradient(
+      circle at 75% 75%,
+      rgba(139, 69, 19, 0.8) 5px,
+      transparent 5px
+    ),
+    radial-gradient(
+      circle at 50% 80%,
+      rgba(139, 69, 19, 0.7) 7px,
+      transparent 7px
+    );
+}
+
+.food-image.quattro-formaggi {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  background-image: radial-gradient(
+      circle at 20% 20%,
+      rgba(255, 255, 255, 0.9) 12px,
+      transparent 12px
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(255, 255, 255, 0.7) 10px,
+      transparent 10px
+    ),
+    radial-gradient(
+      circle at 60% 40%,
+      rgba(255, 255, 255, 0.6) 8px,
+      transparent 8px
+    );
+}
+
+.food-image.diavola-pizza {
+  background: linear-gradient(135deg, #dc2626 0%, #450a0a 100%);
+  background-image: radial-gradient(
+      circle at 30% 70%,
+      rgba(220, 38, 38, 0.8) 4px,
+      transparent 4px
+    ),
+    radial-gradient(
+      circle at 70% 30%,
+      rgba(220, 38, 38, 0.6) 3px,
+      transparent 3px
+    ),
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(220, 38, 38, 0.5) 3px,
+      transparent 3px
+    );
+}
+
+.food-image.carbonara {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 3px,
+    rgba(255, 255, 255, 0.1) 3px,
+    rgba(255, 255, 255, 0.1) 6px
+  );
+}
+
+.food-image.chicken-alfredo {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 3px,
+    rgba(255, 255, 255, 0.1) 3px,
+    rgba(255, 255, 255, 0.1) 6px
+  );
+}
+
+.food-image.arrabbiata {
+  background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+  background-image: radial-gradient(
+      circle at 40% 20%,
+      rgba(34, 197, 94, 0.4) 5px,
+      transparent 5px
+    ),
+    radial-gradient(
+      circle at 70% 80%,
+      rgba(34, 197, 94, 0.3) 4px,
+      transparent 4px
+    );
+}
+
+.food-image.seafood-linguine {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  background-image: radial-gradient(
+      circle at 20% 80%,
+      rgba(14, 165, 233, 0.3) 8px,
+      transparent 8px
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(244, 63, 94, 0.3) 6px,
+      transparent 6px
+    ),
+    radial-gradient(
+      circle at 60% 60%,
+      rgba(14, 165, 233, 0.2) 5px,
+      transparent 5px
+    );
+}
+
+.food-image.osso-buco {
+  background: linear-gradient(135deg, #a16207 0%, #92400e 100%);
+  background-image: radial-gradient(
+    circle at 50% 50%,
+    rgba(245, 158, 11, 0.3) 20px,
+    transparent 20px
+  );
+}
+
+.food-image.chicken-parm {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  background-image: radial-gradient(
+      circle at 50% 50%,
+      rgba(220, 38, 38, 0.3) 15px,
+      transparent 15px
+    ),
+    radial-gradient(
+      circle at 30% 70%,
+      rgba(255, 255, 255, 0.4) 8px,
+      transparent 8px
+    );
+}
+
+.food-image.seafood-risotto {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  background-image: radial-gradient(
+      circle at 20% 80%,
+      rgba(14, 165, 233, 0.3) 8px,
+      transparent 8px
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(244, 63, 94, 0.3) 6px,
+      transparent 6px
+    ),
+    radial-gradient(
+      circle at 60% 60%,
+      rgba(14, 165, 233, 0.2) 5px,
+      transparent 5px
+    );
+}
+
+.food-image.veal-piccata {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  background-image: radial-gradient(
+    circle at 40% 40%,
+    rgba(255, 255, 255, 0.4) 12px,
+    transparent 12px
+  );
+}
+
+.food-image.bruschetta-trio {
+  background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+  background-image: radial-gradient(
+      circle at 40% 20%,
+      rgba(34, 197, 94, 0.4) 5px,
+      transparent 5px
+    ),
+    radial-gradient(
+      circle at 70% 80%,
+      rgba(255, 255, 255, 0.6) 3px,
+      transparent 3px
+    ),
+    radial-gradient(
+      circle at 20% 60%,
+      rgba(245, 158, 11, 0.4) 4px,
+      transparent 4px
+    );
+}
+
+.food-image.antipasto {
+  background: linear-gradient(135deg, #92400e 0%, #a16207 100%);
+  background-image: radial-gradient(
+      circle at 25% 25%,
+      rgba(34, 197, 94, 0.3) 4px,
+      transparent 4px
+    ),
+    radial-gradient(
+      circle at 75% 75%,
+      rgba(220, 38, 38, 0.3) 5px,
+      transparent 5px
+    ),
+    radial-gradient(
+      circle at 50% 80%,
+      rgba(255, 255, 255, 0.4) 6px,
+      transparent 6px
+    );
+}
+
+.food-image.arancini {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  background-image: radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 255, 255, 0.8) 8px,
+      transparent 8px
+    ),
+    radial-gradient(
+      circle at 30% 70%,
+      rgba(139, 69, 19, 0.3) 5px,
+      transparent 5px
+    );
+}
+
+.food-image.calamari {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  background-image: radial-gradient(
+      circle at 30% 30%,
+      rgba(255, 255, 255, 0.6) 6px,
+      transparent 6px
+    ),
+    radial-gradient(
+      circle at 70% 70%,
+      rgba(255, 255, 255, 0.5) 4px,
+      transparent 4px
+    );
+}
+
+.food-image.caesar-salad {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  background-image: radial-gradient(
+      circle at 25% 25%,
+      rgba(255, 255, 255, 0.3) 4px,
+      transparent 4px
+    ),
+    radial-gradient(
+      circle at 75% 75%,
+      rgba(255, 255, 255, 0.3) 3px,
+      transparent 3px
+    ),
+    radial-gradient(
+      circle at 50% 60%,
+      rgba(245, 158, 11, 0.2) 5px,
+      transparent 5px
+    );
+}
+
+.food-image.caprese {
+  background: linear-gradient(135deg, #dc2626 0%, #22c55e 50%, #ffffff 100%);
+  background-image: radial-gradient(
+      circle at 30% 30%,
+      rgba(255, 255, 255, 0.9) 15px,
+      transparent 15px
+    ),
+    radial-gradient(
+      circle at 70% 70%,
+      rgba(34, 197, 94, 0.6) 8px,
+      transparent 8px
+    );
+}
+
+.food-image.arugula-pear {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  background-image: radial-gradient(
+      circle at 40% 60%,
+      rgba(245, 158, 11, 0.4) 8px,
+      transparent 8px
+    ),
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(255, 255, 255, 0.3) 5px,
+      transparent 5px
+    );
+}
+
+.food-image.tiramisu {
+  background: linear-gradient(135deg, #a16207 0%, #92400e 100%);
+  background-image: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.1) 50%,
+      transparent 50%
+    ),
+    linear-gradient(90deg, rgba(139, 69, 19, 0.2) 50%, transparent 50%);
+}
+
+.food-image.panna-cotta {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  background-image: radial-gradient(
+      circle at 50% 80%,
+      rgba(220, 38, 38, 0.3) 10px,
+      transparent 10px
+    ),
+    radial-gradient(
+      circle at 30% 20%,
+      rgba(34, 197, 94, 0.2) 6px,
+      transparent 6px
+    );
+}
+
+.food-image.cannoli {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  background-image: radial-gradient(
+      circle at 30% 30%,
+      rgba(139, 69, 19, 0.4) 5px,
+      transparent 5px
+    ),
+    radial-gradient(
+      circle at 70% 70%,
+      rgba(255, 255, 255, 0.6) 8px,
+      transparent 8px
+    );
+}
+
+.food-image.gelato {
+  background: linear-gradient(135deg, #f8fafc 0%, #fbbf24 50%, #a16207 100%);
+  background-image: radial-gradient(
+      circle at 25% 50%,
+      rgba(139, 69, 19, 0.3) 12px,
+      transparent 12px
+    ),
+    radial-gradient(
+      circle at 75% 50%,
+      rgba(34, 197, 94, 0.2) 8px,
+      transparent 8px
+    );
+}
+
+.dish-info {
+  padding: 24px;
+}
+
+.dish-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.dish-header h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.dish-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #fbbf24;
+  font-size: 14px;
+}
+
+.dish-rating svg {
+  color: #fbbf24;
+}
+
+.dish-rating span {
+  color: #374151;
+  font-weight: 600;
+}
+
+.review-count {
+  color: #6b7280;
+  font-weight: 400;
+}
+
+.dish-description {
+  color: #6b7280;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.dish-meta {
+  margin-bottom: 16px;
+}
+
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.prep-time {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.prep-time svg {
+  color: #d97706;
+}
+
+.spicy-level {
+  display: flex;
+  gap: 2px;
+}
+
+.text-red-500 {
+  color: #ef4444;
+}
+
+.text-gray-300 {
+  color: #d1d5db;
+}
+
+.dietary-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.dietary-tag {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #dcfce7;
+  color: #166534;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.ingredients {
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.ingredients-label {
+  color: #374151;
+  font-weight: 600;
+}
+
+.ingredients-list {
+  color: #6b7280;
+  margin-left: 8px;
+}
+
+.dish-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #1f2937;
+}
+
+.original-price {
+  font-size: 1rem;
+  color: #6b7280;
+  text-decoration: line-through;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  background: #f3f4f6;
+  border-radius: 12px;
+  padding: 4px;
+}
+
+.quantity-btn {
+  background: white;
+  border: none;
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #d97706;
+  transition: all 0.2s ease;
+}
+
+.quantity-btn:hover {
+  background: #d97706;
+  color: white;
+}
+
+.quantity {
+  padding: 0 16px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.add-btn {
+  background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+}
+
+/* No Results */
+.no-results {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.no-results-content {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.no-results-content svg {
+  color: #9ca3af;
+  margin-bottom: 24px;
+}
+
+.no-results h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 12px;
+}
+
+.no-results p {
+  color: #6b7280;
+  margin-bottom: 32px;
+}
+
+.btn-secondary {
+  background: rgba(217, 119, 6, 0.1);
+  color: #d97706;
+  border: 2px solid #d97706;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: #d97706;
+  color: white;
+}
+
+/* Floating Cart */
+.floating-cart {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+  color: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(217, 119, 6, 0.4);
+  z-index: 1000;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.cart-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+}
+
+.cart-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-info span:first-child {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.total {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.checkout-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.checkout-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .filters-content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .dishes-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .main-nav {
+    display: none;
+  }
+
+  .menu-hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .menu-controls {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .filter-btn {
+    align-self: center;
+    width: fit-content;
+  }
+
+  .filters-content {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .dietary-filters {
+    justify-content: center;
+  }
+
+  .categories-scroll {
+    gap: 12px;
+  }
+
+  .category-btn {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  .dishes-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .menu-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .menu-header h2 {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .menu-hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .menu-hero-content p {
+    font-size: 1rem;
+  }
+
+  .search-box input {
+    padding: 14px 14px 14px 44px;
+    font-size: 14px;
+  }
+
+  .filter-btn {
+    padding: 14px 20px;
+    font-size: 14px;
+  }
+
+  .dish-info {
+    padding: 20px;
+  }
+
+  .dish-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .dish-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .floating-cart {
+    left: 16px;
+    right: 16px;
+  }
+
+  .cart-summary {
+    padding: 12px 16px;
+  }
+
+  .no-results {
+    padding: 60px 16px;
+  }
+}

@@ -1,0 +1,48 @@
+/* ErrorState.module.css */
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3xl) var(--space-lg);
+  text-align: center;
+  background: var(--danger-50);
+  border: 1px solid var(--danger-200);
+  border-radius: var(--radius-xl);
+  margin: var(--space-lg) 0;
+}
+
+.errorIcon {
+  color: var(--danger-500);
+  margin-bottom: var(--space-md);
+}
+
+.errorTitle {
+  color: var(--danger-700);
+  margin: 0 0 var(--space-sm) 0;
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+}
+
+.errorMessage {
+  color: var(--danger-600);
+  margin: 0 0 var(--space-lg) 0;
+  max-width: 400px;
+  line-height: 1.5;
+}
+
+.retryBtn {
+  background: var(--danger-600);
+  color: white;
+  border: none;
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-all);
+}
+
+.retryBtn:hover {
+  background: var(--danger-700);
+  transform: translateY(-1px);
+}
