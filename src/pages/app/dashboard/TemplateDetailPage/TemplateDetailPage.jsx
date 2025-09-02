@@ -36,11 +36,11 @@ import {
   ChevronRight,
   Download,
 } from "lucide-react";
-import { useTemplate } from "../../../../../hooks/useTemplate";
-import { useUser } from "../../../../../hooks/useUser";
-import DashboardLayout from "../../components/DashboardLayout/DashboardLayout";
+import { useTemplate } from "../../../../hooks/useTemplate";
+import { useUser } from "../../../../hooks/useUser";
+import DashboardLayout from "../../../../components/layouts/DashboardLayout/DashboardLayout";
 import styles from "./TemplateDetailPage.module.css";
-import { get_image_url } from "../../../../../utils/constants";
+import { get_image_url } from "../../../../utils/constants";
 
 const TemplateDetailPage = () => {
   const { templateId } = useParams();

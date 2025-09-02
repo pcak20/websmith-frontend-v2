@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { TEMPLATE_REGISTRY } from "../../../../templates/conf";
+import { TEMPLATE_REGISTRY } from "../../../templates/conf";
 
 function TemplateSampleViewer() {
   const { templateId } = useParams();

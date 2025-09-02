@@ -1,5 +1,9 @@
-// store/slices/businessSlice.js - Updated for Django Backend
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+// store/slices/businessSlice.js - Updated for Django Backend with Fixed Selectors
+import {
+  createSlice,
+  createAsyncThunk,
+  createSelector,
+} from "@reduxjs/toolkit";
 import {
   businessAPI,
   transformBusinessData,
@@ -848,7 +852,7 @@ export const {
   checkCacheExpiry,
 } = businessSlice.actions;
 
-// Enhanced selectors with memoization
+// Enhanced selectors with memoization - FIXED VERSION
 export const selectBusiness = (state) => state.business;
 export const selectBusinesses = (state) => state.business.businesses;
 export const selectCurrentBusiness = (state) => state.business.currentBusiness;
@@ -856,8 +860,14 @@ export const selectCurrentBusiness = (state) => state.business.currentBusiness;
 export const selectBusinessDetails = (state, businessId) =>
   state.business.businessDetails[businessId];
 
-export const selectBusinessWebsites = (state, businessId) =>
-  state.business.businessWebsites[businessId] || [];
+// Fixed: Use createSelector to memoize and avoid returning new array references
+export const selectBusinessWebsites = createSelector(
+  [
+    (state) => state.business.businessWebsites,
+    (state, businessId) => businessId,
+  ],
+  (businessWebsites, businessId) => businessWebsites[businessId] || []
+);
 
 export const selectBusinessAnalytics = (state, businessId) =>
   state.business.businessAnalytics[businessId];
@@ -875,37 +885,165 @@ export const selectBusinessSuccess = (state) => state.business.success;
 export const selectSelectedBusinesses = (state) =>
   state.business.selectedBusinesses;
 
-export const selectSearchFilters = (state) => ({
-  searchTerm: state.business.searchTerm,
-  selectedCategory: state.business.selectedCategory,
-  sortBy: state.business.sortBy,
-  sortOrder: state.business.sortOrder,
-});
+// Fixed: Memoized search filters selector
+export const selectSearchFilters = createSelector(
+  [
+    (state) => state.business.searchTerm,
+    (state) => state.business.selectedCategory,
+    (state) => state.business.sortBy,
+    (state) => state.business.sortOrder,
+  ],
+  (searchTerm, selectedCategory, sortBy, sortOrder) => ({
+    searchTerm,
+    selectedCategory,
+    sortBy,
+    sortOrder,
+  })
+);
 
-export const selectPaginationData = (state) => ({
-  currentPage: state.business.currentPage,
-  totalCount: state.business.totalCount,
-  totalPages: state.business.totalPages,
-  pageSize: state.business.pageSize,
-  hasMore: state.business.hasMore,
-});
+// Fixed: Memoized pagination data selector
+export const selectPaginationData = createSelector(
+  [
+    (state) => state.business.currentPage,
+    (state) => state.business.totalCount,
+    (state) => state.business.totalPages,
+    (state) => state.business.pageSize,
+    (state) => state.business.hasMore,
+  ],
+  (currentPage, totalCount, totalPages, pageSize, hasMore) => ({
+    currentPage,
+    totalCount,
+    totalPages,
+    pageSize,
+    hasMore,
+  })
+);
 
-// Derived selectors
-export const selectBusinessById = (state, businessId) => {
-  const fromList = state.business.businesses.find((b) => b.id === businessId);
-  const fromDetails = state.business.businessDetails[businessId];
-  return fromDetails || fromList;
-};
+// Derived selectors - also memoized
+export const selectBusinessById = createSelector(
+  [
+    (state) => state.business.businesses,
+    (state) => state.business.businessDetails,
+    (state, businessId) => businessId,
+  ],
+  (businesses, businessDetails, businessId) => {
+    const fromList = businesses.find((b) => b.id === businessId);
+    const fromDetails = businessDetails[businessId];
+    return fromDetails || fromList;
+  }
+);
 
-export const selectActiveBusinesses = (state) =>
-  state.business.businesses.filter((b) => b.status === "active");
+export const selectActiveBusinesses = createSelector(
+  [(state) => state.business.businesses],
+  (businesses) => businesses.filter((b) => b.status === "active")
+);
 
-export const selectBusinessesByCategory = (state, categorySlug) =>
-  state.business.businesses.filter((b) => b.category?.slug === categorySlug);
+export const selectBusinessesByCategory = createSelector(
+  [(state) => state.business.businesses, (state, categorySlug) => categorySlug],
+  (businesses, categorySlug) =>
+    businesses.filter((b) => b.category?.slug === categorySlug)
+);
 
-export const selectIsDataStale = (state) => {
-  if (!state.business.lastFetched) return true;
-  return Date.now() - state.business.lastFetched > state.business.cacheTimeout;
-};
+export const selectIsDataStale = createSelector(
+  [
+    (state) => state.business.lastFetched,
+    (state) => state.business.cacheTimeout,
+  ],
+  (lastFetched, cacheTimeout) => {
+    if (!lastFetched) return true;
+    return Date.now() - lastFetched > cacheTimeout;
+  }
+);
+
+// Add these new optimized selectors for better performance
+export const selectBusinessWebsiteCount = createSelector(
+  [selectBusinessWebsites],
+  (websites) => websites.length
+);
+
+export const selectHasBusinessWebsites = createSelector(
+  [selectBusinessWebsites],
+  (websites) => websites.length > 0
+);
+
+// Selector factory for creating memoized selectors for specific business IDs
+export const makeSelectBusinessWebsites = () =>
+  createSelector(
+    [
+      (state) => state.business.businessWebsites,
+      (state, businessId) => businessId,
+    ],
+    (businessWebsites, businessId) => businessWebsites[businessId] || []
+  );
+
+export const makeSelectBusinessAnalytics = () =>
+  createSelector(
+    [
+      (state) => state.business.businessAnalytics,
+      (state, businessId) => businessId,
+    ],
+    (businessAnalytics, businessId) => businessAnalytics[businessId]
+  );
+
+export const makeSelectBusinessTeam = () =>
+  createSelector(
+    [
+      (state) => state.business.businessTeams,
+      (state, businessId) => businessId,
+    ],
+    (businessTeams, businessId) => businessTeams[businessId]
+  );
+
+export const makeSelectBusinessSettings = () =>
+  createSelector(
+    [
+      (state) => state.business.businessSettings,
+      (state, businessId) => businessId,
+    ],
+    (businessSettings, businessId) => businessSettings[businessId]
+  );
+
+// Additional derived selectors for better component optimization
+export const selectBusinessesWithWebsiteCount = createSelector(
+  [
+    (state) => state.business.businesses,
+    (state) => state.business.businessWebsites,
+  ],
+  (businesses, businessWebsites) =>
+    businesses.map((business) => ({
+      ...business,
+      websiteCount: businessWebsites[business.id]?.length || 0,
+    }))
+);
+
+export const selectBusinessLoadingStates = createSelector(
+  [selectBusinessLoading],
+  (loading) => ({
+    isLoadingAny: Object.values(loading).some(Boolean),
+    isLoadingList: loading.businesses,
+    isLoadingDetails: loading.businessDetails,
+    isCreating: loading.create,
+    isUpdating: loading.update,
+    isDeleting: loading.delete,
+  })
+);
+
+export const selectBusinessErrorStates = createSelector(
+  [selectBusinessError],
+  (error) => ({
+    hasAnyError: Object.values(error).some(Boolean),
+    hasListError: Boolean(error.businesses),
+    hasDetailsError: Boolean(error.businessDetails),
+    hasCreateError: Boolean(error.create),
+    hasUpdateError: Boolean(error.update),
+    hasDeleteError: Boolean(error.delete),
+  })
+);
+
+// Cache and UI state selectors
+export const selectViewMode = (state) => state.business.viewMode;
+export const selectLogoUploadProgress = (state) =>
+  state.business.logoUploadProgress;
+export const selectIsUploadingLogo = (state) => state.business.isUploadingLogo;
 
 export default businessSlice.reducer;

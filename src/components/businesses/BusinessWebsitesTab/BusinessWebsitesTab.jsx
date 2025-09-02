@@ -2,13 +2,11 @@ import Button from "../../UI/Button/Button";
 import styles from "./BusinessWebsiteTab.module.css";
 import { Plus, Globe } from "lucide-react";
 import EmptyState from "../../UI/EmptyState/EmptyState";
+import BusinessWebsiteCard from "../BusinessWebsiteCard/BusinessWebsiteCard";
+import LoadingState from "../../UI/LoadingState/LoadingState";
 
 const BusinessWebsitesTab = ({
-  business,
   websites,
-  templates,
-  featuredTemplates,
-  templateCategories,
   loading,
   error,
   onCreateWebsite,

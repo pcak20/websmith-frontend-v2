@@ -23,8 +23,7 @@ import {
 } from "lucide-react";
 import styles from "./DashboardLayout.module.css";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { useUser } from "../../../../../hooks/useUser";
+import { useUser } from "../../../hooks/useUser";
 
 const DashboardLayout = ({ children, activePage: activePageProp }) => {
   const [sidebarOpen, setSidebarOpen] = useState(true);

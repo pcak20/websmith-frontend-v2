@@ -1,18 +1,18 @@
 // components/AdminTemplateManagement/AdminTemplateManagement.js - Refactored
 import React, { useState, useEffect } from "react";
 import { Plus, Shield, FolderPlus, Upload } from "lucide-react";
-import DashboardLayout from "../../components/DashboardLayout/DashboardLayout";
-import TemplateGrid from "../../../../../components/templates/TemplateGrid/TemplateGrid";
-import TemplateFilters from "../../../../../components/templates/TemplateFilters/TemplateFilters";
-import StatCard from "../../../../../components/UI/StatCard/StatCard";
-import Button from "../../../../../components/UI/Button/Button";
-import LoadingState from "../../../../../components/UI/LoadingState/LoadingState";
-import ErrorState from "../../../../../components/UI/ErrorState/ErrorState";
-import CreateTemplateModal from "../../components/CreateTemplateModal/CreateTemplateModal";
-import CreateCategoryModal from "../../components/CreateCategoryModal/CreateCategoryModal";
-import { useTemplate } from "../../../../../hooks/useTemplate";
-import { useTemplateFilters } from "../../../../../hooks/templates/useTemplateFilters";
-import { TEMPLATE_REGISTRY } from "../../../../templates/conf";
+import DashboardLayout from "../../../../components/layouts/DashboardLayout/DashboardLayout";
+import TemplateGrid from "../../../../components/templates/TemplateGrid/TemplateGrid";
+import TemplateFilters from "../../../../components/templates/TemplateFilters/TemplateFilters";
+import StatCard from "../../../../components/UI/StatCard/StatCard";
+import Button from "../../../../components/UI/Button/Button";
+import LoadingState from "../../../../components/UI/LoadingState/LoadingState";
+import ErrorState from "../../../../components/UI/ErrorState/ErrorState";
+import CreateTemplateModal from "../../../../components/templates/CreateTemplateModal/CreateTemplateModal";
+import CreateCategoryModal from "../../../../components/templates/CreateCategoryModal/CreateCategoryModal";
+import { useTemplate } from "../../../../hooks/useTemplate";
+import { useTemplateFilters } from "../../../../hooks/templates/useTemplateFilters";
+import { TEMPLATE_REGISTRY } from "../../../templates/conf";
 import { useNavigate } from "react-router-dom";
 import styles from "./AdminTemplateManagement.module.css";
 

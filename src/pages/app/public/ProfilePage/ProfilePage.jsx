@@ -15,7 +15,7 @@ import {
   CheckCircle,
   X,
 } from "lucide-react";
-import DashboardLayout from "../../dashboard/components/DashboardLayout/DashboardLayout";
+import DashboardLayout from "../../../../components/layouts/DashboardLayout/DashboardLayout";
 import { useAuth } from "../../../../hooks/useAuth";
 import { useUser } from "../../../../hooks/useUser";
 import ProfileTab from "./tabs/ProfileTab";

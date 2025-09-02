@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   ArrowLeft,
   Eye,
@@ -7,9 +7,6 @@ import {
   Share2,
   Copy,
   ExternalLink,
-  Download,
-  Upload,
-  Trash2,
   Globe,
   Users,
   MousePointer,
@@ -23,25 +20,16 @@ import {
   Type,
   Image,
   Layout,
-  Code,
-  Link,
   CheckCircle,
-  AlertCircle,
-  XCircle,
   Calendar,
-  DollarSign,
   Target,
   Zap,
   Shield,
   Layers,
   FileText,
   Camera,
-  Play,
-  Pause,
-  RotateCcw,
-  Save,
 } from "lucide-react";
-import DashboardLayout from "../../components/DashboardLayout/DashboardLayout";
+import DashboardLayout from "../../../../components/layouts/DashboardLayout/DashboardLayout";
 import styles from "./BusinessWebsiteDetailDashboard.module.css";
 
 const BusinessWebsiteDetailDashboard = ({ businessId, websiteId }) => {

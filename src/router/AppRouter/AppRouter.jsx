@@ -2,16 +2,16 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "../../pages/app/public/HomePage/HomePage";
 import RestaurantRouter from "./RestaurantRouter";
 import TransportRouter from "./TransportRouter";
-import DashboardLayout from "../../pages/app/dashboard/components/DashboardLayout/DashboardLayout";
-import BusinessDashboard from "../../pages/app/dashboard/pages/BusinessDashboard/BusinessDashboard";
-import BusinessDetailDashboard from "../../pages/app/dashboard/pages/BusinessDetailDashboard/BusinessDetailDashboard";
-import BusinessWebsiteDetailDashboard from "../../pages/app/dashboard/pages/BusinessWebsiteDetailDashboard/BusinessWebsiteDetailDashboard";
+import DashboardLayout from "../../components/layouts/DashboardLayout/DashboardLayout";
+import BusinessDashboard from "../../pages/app/dashboard/BusinessDashboard/BusinessDashboard";
+import BusinessDetailDashboard from "../../pages/app/dashboard/BusinessDetailDashboard/BusinessDetailDashboard";
+import BusinessWebsiteDetailDashboard from "../../pages/app/dashboard/BusinessWebsiteDetailDashboard/BusinessWebsiteDetailDashboard";
 import LoginPage from "../../pages/app/public/LoginPage/LoginPage";
 import RegisterPage from "../../pages/app/public/RegisterPage/RegisterPage";
 import ProfilePage from "../../pages/app/public/ProfilePage/ProfilePage";
-import AdminTemplateManagement from "../../pages/app/dashboard/pages/AdminTemplateManagement/AdminTemplateManagement";
-import TemplateDetailPage from "../../pages/app/dashboard/pages/TemplateDetailPage/TemplateDetailPage";
-import TemplateSampleViewer from "../../pages/app/dashboard/pages/TemplateSampleViewer/TemplateSampleViewer";
+import AdminTemplateManagement from "../../pages/app/dashboard/AdminTemplateManagement/AdminTemplateManagement";
+import TemplateDetailPage from "../../pages/app/dashboard/TemplateDetailPage/TemplateDetailPage";
+import TemplateSampleViewer from "../../pages/app/dashboard/TemplateSampleViewer/TemplateSampleViewer";
 function AppRouter() {
   return (
     <BrowserRouter>

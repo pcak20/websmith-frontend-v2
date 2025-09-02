@@ -9,8 +9,8 @@ import {
   Settings,
   MoreVertical,
 } from "lucide-react";
-import Button from "../common/Button/Button";
-import StatusBadge from "../common/StatusBadge/StatusBadge";
+import Button from "../../UI/Button/Button";
+import StatusBadge from "../../UI/StatusBadge/StatusBadge";
 import styles from "./BusinessWebsiteCard.module.css";
 
 const BusinessWebsiteCard = ({ website, onAction }) => {

@@ -10,25 +10,25 @@ import {
   Settings,
   ArrowRight,
 } from "lucide-react";
-import DashboardLayout from "../../components/DashboardLayout/DashboardLayout";
-import StatCard from "../../../../../components/UI/StatCard/StatCard";
-import SearchInput from "../../../../../components/UI/SearchInput/SearchInput";
-import LoadingState from "../../../../../components/UI/LoadingState/LoadingState";
-import ErrorState from "../../../../../components/UI/ErrorState/ErrorState";
-import EmptyState from "../../../../../components/UI/EmptyState/EmptyState";
-import Button from "../../../../../components/UI/Button/Button";
-import CreateBusinessModal from "../../components/CreateBusinessModal/CreateBusinessModal";
-import { useBusiness } from "../../../../../hooks/useBusiness";
-import { useDebounce } from "../../../../../hooks/useDebounce";
+import DashboardLayout from "../../../../components/layouts/DashboardLayout/DashboardLayout";
+import StatCard from "../../../../components/UI/StatCard/StatCard";
+import SearchInput from "../../../../components/UI/SearchInput/SearchInput";
+import LoadingState from "../../../../components/UI/LoadingState/LoadingState";
+import ErrorState from "../../../../components/UI/ErrorState/ErrorState";
+import EmptyState from "../../../../components/UI/EmptyState/EmptyState";
+import Button from "../../../../components/UI/Button/Button";
+import CreateBusinessModal from "../../../../components/businesses/CreateBusinessModal/CreateBusinessModal";
+import { useBusiness } from "../../../../hooks/useBusiness";
+import { useDebounce } from "../../../../hooks/useDebounce";
 import {
   getCategoryIcon,
   getCategoryColor,
   formatBusinessMetrics,
   generateBusinessSummary,
-} from "../../../../../utils/businessUtils";
-import QuickActionCard from "../../../../../components/businesses/QuickActionCard/QuickActionCard";
+} from "../../../../utils/businessUtils";
+import QuickActionCard from "../../../../components/businesses/QuickActionCard/QuickActionCard";
 import styles from "./BusinessDashboard.module.css";
-import BusinessCard from "../../../../../components/businesses/BusinessCard/BusinessCard";
+import BusinessCard from "../../../../components/businesses/BusinessCard/BusinessCard";
 
 const BusinessDashboard = () => {
   const [searchTerm, setSearchTerm] = useState("");
