@@ -31,8 +31,10 @@ import {
 } from "lucide-react";
 import DashboardLayout from "../../../../components/layouts/DashboardLayout/DashboardLayout";
 import styles from "./BusinessWebsiteDetailDashboard.module.css";
+import { useNavigate, useParams } from "react-router-dom";
 
-const BusinessWebsiteDetailDashboard = ({ businessId, websiteId }) => {
+const BusinessWebsiteDetailDashboard = () => {
+  const { websiteId } = useParams();
   const [activeTab, setActiveTab] = useState("overview");
   const [previewDevice, setPreviewDevice] = useState("desktop");
   const [showPublishModal, setShowPublishModal] = useState(false);
@@ -148,11 +150,14 @@ const BusinessWebsiteDetailDashboard = ({ businessId, websiteId }) => {
     backgroundColor: "#ffffff",
   };
 
+  const navigate = useNavigate();
+
   const handleAction = (action) => {
     console.log(`Action: ${action}`);
     switch (action) {
       case "edit":
         // Navigate to page editor
+        navigate("/dashboard/website/edit/" + websiteId);
         console.log("Opening page editor...");
         break;
       case "preview":

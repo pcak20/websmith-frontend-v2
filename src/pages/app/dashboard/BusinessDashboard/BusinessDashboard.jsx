@@ -117,7 +117,7 @@ const BusinessDashboard = () => {
   };
 
   return (
-    <DashboardLayout activePage="businesses">
+    <DashboardLayout activePage="business">
       <div className={styles.businessDashboard}>
         {/* Header */}
         <div className={styles.dashboardHeaderSection}>

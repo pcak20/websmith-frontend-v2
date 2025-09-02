@@ -207,7 +207,7 @@ const BusinessDetailDashboard = () => {
   // Loading state
   if (businessLoading.businessDetails && !business) {
     return (
-      <DashboardLayout activePage="businesses">
+      <DashboardLayout activePage="business">
         <LoadingState size="large" message="Loading business details..." />
       </DashboardLayout>
     );
@@ -216,7 +216,7 @@ const BusinessDetailDashboard = () => {
   // Error state
   if (businessError.businessDetails && !business) {
     return (
-      <DashboardLayout activePage="businesses">
+      <DashboardLayout activePage="business">
         <ErrorState
           title="Error Loading Business"
           message={businessError.businessDetails}
@@ -229,7 +229,7 @@ const BusinessDetailDashboard = () => {
   // Not found state
   if (!businessLoading.businessDetails && !business) {
     return (
-      <DashboardLayout activePage="businesses">
+      <DashboardLayout activePage="business">
         <EmptyState
           title="Business Not Found"
           message="The business you're looking for doesn't exist or you don't have access to it."
@@ -248,7 +248,7 @@ const BusinessDetailDashboard = () => {
   }
 
   return (
-    <DashboardLayout activePage="businesses">
+    <DashboardLayout activePage="business">
       <div className={styles.businessDetail}>
         {/* Header */}
         <BusinessHeader

@@ -12,6 +12,7 @@ import {
 import Button from "../../UI/Button/Button";
 import StatusBadge from "../../UI/StatusBadge/StatusBadge";
 import styles from "./BusinessWebsiteCard.module.css";
+import { useNavigate } from "react-router-dom";
 
 const BusinessWebsiteCard = ({ website, onAction }) => {
   const handleAction = (action, e) => {
@@ -19,8 +20,14 @@ const BusinessWebsiteCard = ({ website, onAction }) => {
     onAction(action, website);
   };
 
+  const navigate = useNavigate();
+
+  const handleWebsiteCardClick = () => {
+    navigate("/dashboard/website/detail/" + website.id);
+  };
+
   return (
-    <div className={styles.websiteCard}>
+    <div onClick={handleWebsiteCardClick} className={styles.websiteCard}>
       <div className={styles.websitePreview}>
         <div className={styles.websiteThumbnail}>
           {website.favicon && <img src={website.favicon} alt={website.name} />}
