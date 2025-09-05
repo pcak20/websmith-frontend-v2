@@ -1,5 +1,5 @@
-import RestaurantTemplate1Router from "./restaurant/template1";
-import TransportTemplate1Router from "./transport/template1";
+import RestaurantTemplate1Router from "./displays/restaurant/template1";
+import TransportTemplate1Router from "./displays/transport/template1";
 
 export const TEMPLATE_REGISTRY = {
   "restaurant-template-001": {
