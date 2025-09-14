@@ -1,0 +1,190 @@
+/* Main editable text element */
+.textElement {
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  border-radius: 4px;
+  padding: 4px;
+  margin: -4px;
+  display: inline-block;
+  min-width: 20px;
+  min-height: 20px;
+}
+
+.textElement:hover {
+  background: rgba(59, 130, 246, 0.1);
+  outline: 2px dashed #3b82f6;
+  outline-offset: 2px;
+}
+
+.textElement:hover::after {
+  content: "✏️ Click to edit";
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1f2937;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  z-index: 2147483646;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+}
+
+.textElement:hover::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #1f2937;
+  z-index: 2147483646;
+  pointer-events: none;
+}
+
+/* Heading Elements */
+.heading1 {
+  display: block;
+  font-size: 2em;
+  font-weight: bold;
+  margin: 0.67em 0;
+}
+
+.heading2 {
+  display: block;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0.75em 0;
+}
+
+.heading3 {
+  display: block;
+  font-size: 1.17em;
+  font-weight: bold;
+  margin: 0.83em 0;
+}
+
+.heading4 {
+  display: block;
+  font-size: 1em;
+  font-weight: bold;
+  margin: 1.12em 0;
+}
+
+.heading5 {
+  display: block;
+  font-size: 0.83em;
+  font-weight: bold;
+  margin: 1.5em 0;
+}
+
+.heading6 {
+  display: block;
+  font-size: 0.75em;
+  font-weight: bold;
+  margin: 1.67em 0;
+}
+
+/* Span Element */
+.spanElement {
+  display: inline;
+  margin: 0;
+  padding: 2px;
+  margin: -2px;
+}
+
+/* Div Element */
+.divElement {
+  display: block;
+  margin: 1em 0;
+}
+
+/* Blockquote Element */
+.blockquoteElement {
+  display: block;
+  margin: 1em 40px;
+  padding: 10px 20px;
+  border-left: 4px solid #3b82f6;
+  background: rgba(59, 130, 246, 0.05);
+  font-style: italic;
+}
+
+/* Label Element */
+.labelElement {
+  display: inline-block;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+/* Special hover states for block elements */
+.heading1:hover,
+.heading2:hover,
+.heading3:hover,
+.heading4:hover,
+.heading5:hover,
+.heading6:hover,
+.divElement:hover,
+.blockquoteElement:hover {
+  margin: 0.5em -4px;
+  padding: 8px;
+}
+
+/* Adjust tooltip for different element types */
+.heading1:hover::after {
+  content: "✏️ Click to edit heading";
+}
+.heading2:hover::after {
+  content: "✏️ Click to edit heading";
+}
+.heading3:hover::after {
+  content: "✏️ Click to edit heading";
+}
+.heading4:hover::after {
+  content: "✏️ Click to edit heading";
+}
+.heading5:hover::after {
+  content: "✏️ Click to edit heading";
+}
+.heading6:hover::after {
+  content: "✏️ Click to edit heading";
+}
+.spanElement:hover::after {
+  content: "✏️ Click to edit span";
+}
+.divElement:hover::after {
+  content: "✏️ Click to edit div";
+}
+.blockquoteElement:hover::after {
+  content: "✏️ Click to edit quote";
+}
+.labelElement:hover::after {
+  content: "✏️ Click to edit label";
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .textElement:hover::after {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .textElement:hover {
+    background: rgba(59, 130, 246, 0.2);
+  }
+
+  .blockquoteElement {
+    border-left-color: #60a5fa;
+    background: rgba(59, 130, 246, 0.1);
+  }
+}

@@ -14,32 +14,15 @@ import {
   Smartphone,
   Monitor,
   Tablet,
-  Plus,
-  Trash2,
-  Copy,
-  Move,
   Undo,
   Redo,
-  MousePointer,
   Square,
-  Circle,
   FileText,
   Link,
   Grid,
-  AlignLeft,
-  AlignCenter,
-  AlignRight,
-  Bold,
-  Italic,
-  Underline,
-  List,
-  ChevronDown,
-  ChevronRight,
-  MoreVertical,
   Edit3,
   Zap,
 } from "lucide-react";
-import DashboardLayout from "../../../../components/layouts/DashboardLayout/DashboardLayout";
 import { useWebsite } from "../../../../hooks/useWebsite";
 import styles from "./BusinessWebsiteEditor.module.css";
 

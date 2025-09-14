@@ -1,0 +1,560 @@
+.editorCanvas {
+  flex: 1;
+  background: #f1f5f9;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.canvasContainer {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.canvasContainer.desktop {
+  width: 100%;
+  max-width: 1200px;
+  min-height: 800px;
+}
+
+.canvasContainer.tablet {
+  width: 768px;
+  min-height: 1024px;
+}
+
+.canvasContainer.mobile {
+  width: 375px;
+  min-height: 667px;
+}
+
+.canvasContent {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+/* Mock Page Content */
+.pagePreview {
+  width: 100%;
+  min-height: 100%;
+}
+
+.mockSection {
+  width: 100%;
+  position: relative;
+}
+
+.mockHero {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.mockHeroContent {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.mockTitle {
+  font-size: 3rem;
+  font-weight: 800;
+  margin: 0 0 20px 0;
+  line-height: 1.2;
+}
+
+.mockSubtitle {
+  font-size: 1.25rem;
+  margin: 0 0 30px 0;
+  opacity: 0.9;
+}
+
+.mockButton {
+  background: white;
+  color: #667eea;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mockButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.mockContent {
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.mockContent h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 40px 0;
+}
+
+.mockGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.mockCard {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.mockCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-color: #667eea;
+}
+
+.mockCardIcon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  margin: 0 auto 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.mockCard h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 16px 0;
+}
+
+.mockCard p {
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.mockContact {
+  background: #f8fafc;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.mockContact h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 40px 0;
+}
+
+.mockForm {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mockFormRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.mockInput {
+  height: 50px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.mockTextarea {
+  height: 120px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+.mockFormButton {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mockFormButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+/* Editable Elements */
+.editableText {
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  border-radius: 4px;
+  padding: 4px;
+  margin: -4px;
+}
+
+.editableText:hover {
+  background: rgba(102, 126, 234, 0.1);
+  outline: 2px dashed #667eea;
+}
+
+.editableText:hover::after {
+  content: "✏️ Click to edit";
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.editableButton {
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.editableButton:hover {
+  outline: 2px dashed #667eea;
+  background: rgba(102, 126, 234, 0.1) !important;
+}
+
+.editableButton:hover::after {
+  content: "✏️ Click to edit";
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.editableImage {
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  border-radius: 4px;
+}
+
+.editableImage:hover {
+  outline: 2px dashed #667eea;
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.editableImage:hover::after {
+  content: "🖼️ Click to edit";
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.placeholderImage {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: inherit;
+}
+
+.uploadedImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+/* Modal Styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow: auto;
+  animation: slideIn 0.2s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.modalHeader h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #64748b;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+  background: #f1f5f9;
+  color: #1e293b;
+}
+
+.modalContent {
+  padding: 24px;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 20px 24px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.textInput,
+.numberInput,
+.selectInput {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+}
+
+.textInput:focus,
+.numberInput:focus,
+.selectInput:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.textInput {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.colorInput {
+  width: 60px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.fileInput {
+  width: 100%;
+  padding: 12px;
+  border: 2px dashed #d1d5db;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.fileInput:hover {
+  border-color: #667eea;
+  background: #f8fafc;
+}
+
+.preview {
+  margin-top: 20px;
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 6px;
+}
+
+.preview p {
+  margin: 0 0 12px 0;
+  font-weight: 500;
+  color: #374151;
+}
+
+.imagePreview {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.imagePreview p {
+  margin: 0 0 12px 0;
+  font-weight: 500;
+  color: #374151;
+}
+
+.previewImage {
+  max-width: 100%;
+  max-height: 200px;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cancelButton,
+.saveButton {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancelButton {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.cancelButton:hover {
+  background: #e2e8f0;
+  color: #475569;
+}
+
+.saveButton {
+  background: #667eea;
+  color: white;
+}
+
+.saveButton:hover:not(:disabled) {
+  background: #5a67d8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.saveButton:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .modal {
+    width: 95%;
+    margin: 20px;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+
+  .modalContent {
+    padding: 16px;
+  }
+
+  .modalHeader,
+  .modalFooter {
+    padding: 16px;
+  }
+}
