@@ -1,0 +1,40 @@
+/* Editor Canvas */
+.editorCanvas {
+  flex: 1;
+  background: #f1f5f9;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.canvasContainer {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.canvasContainer.desktop {
+  width: 100%;
+  max-width: 1200px;
+  min-height: 800px;
+}
+
+.canvasContainer.tablet {
+  width: 768px;
+  min-height: 1024px;
+}
+
+.canvasContainer.mobile {
+  width: 375px;
+  min-height: 667px;
+}
+
+.canvasContent {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
