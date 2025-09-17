@@ -38,3 +38,15 @@
   height: 100%;
   overflow: auto;
 }
+
+@media (max-width: 768px) {
+  .editorCanvas {
+    padding: 10px;
+  }
+
+  .canvasContainer.desktop,
+  .canvasContainer.tablet {
+    width: 100%;
+    min-width: 320px;
+  }
+}
