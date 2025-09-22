@@ -1,0 +1,87 @@
+.section {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 16px 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.sectionHeader:hover {
+  background-color: #f9fafb;
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.sectionContent {
+  padding: 0 20px 20px 20px;
+}
+
+.themeGrid {
+  display: grid;
+  gap: 12px;
+}
+
+.themeCard {
+  padding: 12px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.themeCard:hover {
+  border-color: #d1d5db;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.themeCard.active {
+  border-color: #3b82f6;
+  background-color: #eff6ff;
+}
+
+.themeHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.themeColors {
+  display: flex;
+  gap: 4px;
+}
+
+.themeColor {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.themeInfo {
+  flex: 1;
+}
+
+.themeName {
+  font-weight: 500;
+  color: #111827;
+  margin-bottom: 2px;
+}
+
+.themeDescription {
+  font-size: 12px;
+  color: #6b7280;
+}

@@ -33,11 +33,11 @@ const setupBusinessAuthInterceptors = (client) => {
     (response) => {
       if (response.config.metadata && import.meta.env.DEV) {
         const responseTime = Date.now() - response.config.metadata.startTime;
-        console.log(
-          `Business Auth API ${response.config.method?.toUpperCase()} ${
-            response.config.url
-          }: ${responseTime}ms`
-        );
+        // console.log(
+        //   `Business Auth API ${response.config.method?.toUpperCase()} ${
+        //     response.config.url
+        //   }: ${responseTime}ms`
+        // );
       }
       return response;
     },

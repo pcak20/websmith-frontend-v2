@@ -1,0 +1,29 @@
+.resetSection {
+  padding: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.resetBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 16px;
+  background-color: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.resetBtn:hover {
+  background-color: #e5e7eb;
+  border-color: #9ca3af;
+}
+
+.resetBtn:active {
+  background-color: #d1d5db;
+}

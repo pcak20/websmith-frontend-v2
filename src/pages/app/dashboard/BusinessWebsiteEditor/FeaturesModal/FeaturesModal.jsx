@@ -1,18 +1,22 @@
 import styles from "./FeaturesModal.module.css";
 
-function FeaturesModal({
-  websiteFeatures,
-  getEnabledPagesCount,
-  getEnabledFeaturesCount,
-  onCloseModal,
-  onSaveChanges,
-}) {
+function FeaturesModal({ conf }) {
+  const {
+    websiteFeatures,
+    getEnabledPagesCount,
+    getEnabledFeaturesCount,
+    setShowFeaturesModal,
+    handleSaveChanges,
+  } = conf;
   return (
-    <div className={styles.modalOverlay} onClick={() => onCloseModal(false)}>
+    <div
+      className={styles.modalOverlay}
+      onClick={() => setShowFeaturesModal(false)}
+    >
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
         <div className={styles.modalHeader}>
           <h3>Website Features Configuration</h3>
-          <button onClick={() => onCloseModal(false)}>×</button>
+          <button onClick={() => setShowFeaturesModal(false)}>×</button>
         </div>
         <div className={styles.modalBody}>
           <div className={styles.featuresGrid}>
@@ -570,15 +574,15 @@ function FeaturesModal({
             <div className={styles.modalActions}>
               <button
                 className={styles.cancelBtn}
-                onClick={() => onCloseModal(false)}
+                onClick={() => setShowFeaturesModal(false)}
               >
                 Cancel
               </button>
               <button
                 className={styles.saveBtn}
                 onClick={() => {
-                  onCloseModal(false);
-                  onSaveChanges();
+                  setShowFeaturesModal(false);
+                  handleSaveChanges();
                 }}
               >
                 Save Configuration

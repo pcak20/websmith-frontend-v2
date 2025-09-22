@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import {
   ShoppingCart,
   Plus,
@@ -18,75 +18,85 @@ import {
   Instagram,
   Facebook,
   Twitter,
-  Palette,
-  ChevronDown,
-  X,
 } from "lucide-react";
 import styles from "./HomePage.module.css";
+import conf from "../../conf";
 
 const HomePage = ({
-  themes = {},
-  defaultTheme = "default",
+  theme,
   restaurantData = {},
   menuData = {},
-  showThemeSelector = true,
+  isContained = false,
+  containerWidth = null,
+  viewportMode = "desktop",
 }) => {
   const [cartItems, setCartItems] = useState([]);
   const [favorites, setFavorites] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("featured");
-  const [showThemeDropdown, setShowThemeDropdown] = useState(false);
-  const [currentTheme, setCurrentTheme] = useState(defaultTheme);
+  const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
+  const containerRef = useRef(null);
 
-  // Default fallback theme if no themes provided
-  const defaultThemes = {
-    default: {
-      name: "Default",
-      description: "Default restaurant colors",
-      primary: "#d97706",
-      secondary: "#f59e0b",
-      accent: "#fbbf24",
-      highlight: "#dc2626",
-    },
-  };
+  const currentTheme = useMemo(() => {
+    return conf.themes[theme];
+  }, [theme]);
 
-  // Use provided themes or fallback to default
-  const availableThemes =
-    Object.keys(themes).length > 0 ? themes : defaultThemes;
+  // Container size observer for responsive behavior
+  useEffect(() => {
+    const updateSize = () => {
+      if (containerRef.current) {
+        const { width, height } = containerRef.current.getBoundingClientRect();
+        setContainerSize({ width, height });
+      }
+    };
+
+    // Use ResizeObserver if available, fallback to window resize
+    if (window.ResizeObserver && containerRef.current) {
+      const resizeObserver = new ResizeObserver(updateSize);
+      resizeObserver.observe(containerRef.current);
+      return () => resizeObserver.disconnect();
+    } else {
+      updateSize();
+      window.addEventListener("resize", updateSize);
+      return () => window.removeEventListener("resize", updateSize);
+    }
+  }, []);
 
   // Apply theme to CSS custom properties
-  const applyTheme = (themeName) => {
-    const theme = availableThemes[themeName];
-    if (theme) {
-      document.documentElement.style.setProperty(
-        "--primary-color",
-        theme.primary
-      );
-      document.documentElement.style.setProperty(
-        "--secondary-color",
-        theme.secondary
-      );
-      document.documentElement.style.setProperty(
-        "--accent-color",
-        theme.accent
-      );
-      document.documentElement.style.setProperty(
-        "--highlight-color",
-        theme.highlight
-      );
-      setCurrentTheme(themeName);
-      setShowThemeDropdown(false);
+  useEffect(() => {
+    // Apply to container element if contained, otherwise to document root
+    const root =
+      isContained && containerRef.current
+        ? containerRef.current
+        : document.documentElement;
+
+    root.style.setProperty("--primary-color", currentTheme.primary);
+    root.style.setProperty("--secondary-color", currentTheme.secondary);
+    root.style.setProperty("--accent-color", currentTheme.accent);
+    root.style.setProperty("--highlight-color", currentTheme.highlight);
+  }, [currentTheme, isContained]);
+
+  // Determine responsive class based on container width or viewport mode
+  const getResponsiveClass = () => {
+    // If explicit container width is provided, use it
+    if (containerWidth) {
+      if (containerWidth < 480) return "mobile";
+      if (containerWidth < 768) return "tablet";
+      return "desktop";
     }
+
+    // If viewport mode is explicitly set (for editor controls)
+    if (viewportMode !== "desktop") {
+      return viewportMode;
+    }
+
+    // Otherwise use observed container size
+    const width = containerSize.width || window.innerWidth;
+    if (width < 480) return "mobile";
+    if (width < 768) return "tablet";
+    return "desktop";
   };
 
-  // Initialize theme on component mount or when themes/defaultTheme props change
-  useEffect(() => {
-    const themeToApply = availableThemes[defaultTheme]
-      ? defaultTheme
-      : Object.keys(availableThemes)[0];
-    if (themeToApply) {
-      applyTheme(themeToApply);
-    }
-  }, [themes, defaultTheme]);
+  const responsiveClass = getResponsiveClass();
 
   // Default restaurant info with ability to override via props
   const defaultRestaurantInfo = {
@@ -251,7 +261,12 @@ const HomePage = ({
       : featuredDishes.filter((dish) => dish.category === selectedCategory);
 
   return (
-    <div className={styles.restaurantHomepage}>
+    <div
+      ref={containerRef}
+      className={`${styles.restaurantHomepage} ${styles[responsiveClass]} ${
+        isContained ? styles.contained : ""
+      }`}
+    >
       {/* Header */}
       <header className={styles.restaurantHeader}>
         <div className={styles.container}>
@@ -267,75 +282,6 @@ const HomePage = ({
               <a href="#reviews">Reviews</a>
             </nav>
             <div className={styles.headerActions}>
-              {/* Theme Selector - Only show if enabled and multiple themes available */}
-              {showThemeSelector && Object.keys(availableThemes).length > 1 && (
-                <div className={styles.themeSelector}>
-                  <button
-                    className={styles.themeButton}
-                    onClick={() => setShowThemeDropdown(!showThemeDropdown)}
-                  >
-                    <Palette size={20} />
-                    <ChevronDown size={16} />
-                  </button>
-
-                  {showThemeDropdown && (
-                    <div className={styles.themeDropdown}>
-                      <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "space-between",
-                          alignItems: "center",
-                          marginBottom: "16px",
-                        }}
-                      >
-                        <h3>Choose Theme</h3>
-                        <button
-                          onClick={() => setShowThemeDropdown(false)}
-                          style={{
-                            background: "none",
-                            border: "none",
-                            cursor: "pointer",
-                            color: "#6b7280",
-                          }}
-                        >
-                          <X size={20} />
-                        </button>
-                      </div>
-                      <div className={styles.themeGrid}>
-                        {Object.entries(availableThemes).map(([key, theme]) => (
-                          <div
-                            key={key}
-                            className={`${styles.themeCard} ${
-                              currentTheme === key ? styles.active : ""
-                            }`}
-                            onClick={() => applyTheme(key)}
-                          >
-                            <div className={styles.themeColors}>
-                              <div
-                                className={styles.themeColor}
-                                style={{ backgroundColor: theme.primary }}
-                              ></div>
-                              <div
-                                className={styles.themeColor}
-                                style={{ backgroundColor: theme.secondary }}
-                              ></div>
-                              <div
-                                className={styles.themeColor}
-                                style={{ backgroundColor: theme.accent }}
-                              ></div>
-                            </div>
-                            <div className={styles.themeInfo}>
-                              <h4>{theme.name}</h4>
-                              <p>{theme.description}</p>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              )}
-
               <button className={styles.cartBtn}>
                 <ShoppingCart size={20} />
                 <span className={styles.cartCount}>{getTotalItems()}</span>

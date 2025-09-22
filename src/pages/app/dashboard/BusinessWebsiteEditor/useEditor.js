@@ -1,120 +1,47 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import useFeatures from "./useFeatures";
+import { useWebsite } from "../../../../hooks/useWebsite";
+import useTemplate from "./useTemplate";
 
-export const useEditor = () => {
-  // Website features state
-  const [websiteFeatures, setWebsiteFeatures] = useState({
-    // Pages & Navigation
-    showAboutPage: true,
-    showServicesPage: true,
-    showGalleryPage: false,
-    showBlogPage: false,
-    showTestimonialsPage: false,
-    showFaqPage: false,
-    showPrivacyPage: true,
-    showTermsPage: true,
+export const useEditor = (templateId) => {
+  const templateData = useTemplate(templateId);
 
-    // E-commerce
-    enableEcommerce: false,
-    showPricingPage: false,
-    enablePayments: false,
-    acceptPaypal: false,
-    acceptStripe: false,
-    acceptCrypto: false,
-    showShoppingCart: false,
-    enableWishlist: false,
-
-    // User Management
-    allowUserRegistration: false,
-    requireEmailVerification: true,
-    enableUserProfiles: false,
-    enableSocialLogin: false,
-    allowGuestCheckout: true,
-
-    // Communication
-    enableContactForm: true,
-    showPhoneNumber: true,
-    showEmailAddress: true,
-    showPhysicalAddress: false,
-    enableLiveChat: false,
-    enableAppointmentBooking: false,
-    enableNewsletterSignup: false,
-
-    // Content & Engagement
-    enableComments: false,
-    enableRatings: false,
-    enableSocialSharing: true,
-    showSocialMediaLinks: true,
-    enableSearch: false,
-    enableMultiLanguage: false,
-
-    // Analytics & Marketing
-    enableGoogleAnalytics: false,
-    enableFacebookPixel: false,
-    enableCookieConsent: true,
-    enableGDPRCompliance: true,
-    enableSEOOptimization: true,
-    enableSitemap: true,
-
-    // Security & Performance
-    enableSSL: true,
-    enableCDN: false,
-    enableCaching: true,
-    enableBackups: true,
-    enable2FA: false,
-    enableCaptcha: false,
-
-    // Integrations
-    enableGoogleMaps: false,
-    enableCalendarIntegration: false,
-    enableCRMIntegration: false,
-    enableEmailMarketing: false,
-    enableZapierIntegration: false,
+  const [properties, setProperties] = useState({
+    theme: "default",
   });
 
-  const handleFeatureToggle = (featureName, value) => {
-    setWebsiteFeatures((prev) => ({
-      ...prev,
-      [featureName]: value,
+  const handlePropertiesChange = (name, value) => {
+    setProperties((prevProperties) => ({
+      ...prevProperties,
+      [name]: value,
     }));
-    setUnsavedChanges(true);
-
-    // Handle dependent features logic
-    if (featureName === "enableEcommerce" && value) {
-      setWebsiteFeatures((prev) => ({
-        ...prev,
-        showPricingPage: true,
-        showShoppingCart: true,
-        enablePayments: true,
-      }));
-    }
-
-    if (featureName === "allowUserRegistration" && value) {
-      setWebsiteFeatures((prev) => ({
-        ...prev,
-        enableUserProfiles: true,
-      }));
-    }
-
-    if (featureName === "enableEcommerce" && !value) {
-      setWebsiteFeatures((prev) => ({
-        ...prev,
-        showPricingPage: false,
-        showShoppingCart: false,
-        enablePayments: false,
-        acceptPaypal: false,
-        acceptStripe: false,
-        acceptCrypto: false,
-        enableWishlist: false,
-      }));
-    }
-
-    if (featureName === "allowUserRegistration" && !value) {
-      setWebsiteFeatures((prev) => ({
-        ...prev,
-        enableUserProfiles: false,
-        enableSocialLogin: false,
-      }));
-    }
   };
-  return [websiteFeatures, handleFeatureToggle];
+
+  const { loading, currentWebsite } = useWebsite();
+  const [websiteFeatures, handleFeatureToggle] = useFeatures();
+
+  // Editor state
+  const [unsavedChanges, setUnsavedChanges] = useState(false);
+  const [showFeaturesModal, setShowFeaturesModal] = useState(false);
+
+  // Mock template data - in real app this would come from the website's template
+
+  const [currentTemplatePage, setCurrentTemplatePage] = useState(
+    templateData.availablePages[0]
+  );
+
+  return {
+    websiteFeatures,
+    handleFeatureToggle,
+    unsavedChanges,
+    showFeaturesModal,
+    currentTemplatePage,
+    setShowFeaturesModal,
+    setCurrentTemplatePage,
+    currentWebsite,
+    loading,
+    properties,
+    handlePropertiesChange,
+    ...templateData,
+  };
 };

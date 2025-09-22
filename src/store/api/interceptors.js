@@ -45,11 +45,11 @@ export const setupResponseInterceptor = (client) => {
       // Log response time for debugging
       if (response.config.metadata && import.meta.env.DEV) {
         const responseTime = Date.now() - response.config.metadata.startTime;
-        console.log(
-          `API ${response.config.method?.toUpperCase()} ${
-            response.config.url
-          }: ${responseTime}ms`
-        );
+        // console.log(
+        //   `API ${response.config.method?.toUpperCase()} ${
+        //     response.config.url
+        //   }: ${responseTime}ms`
+        // );
       }
       return response;
     },

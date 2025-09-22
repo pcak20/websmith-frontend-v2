@@ -1,0 +1,9 @@
+.designPanel {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%;
+  max-width: 400px;
+  height: fit-content;
+}

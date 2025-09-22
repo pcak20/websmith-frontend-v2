@@ -1,12 +1,12 @@
-import RestaurantTemplate1Router from "./displays/restaurant/template1";
 import TransportTemplate1Router from "./displays/transport/template1";
+import restaurantTemplate1Conf from "./displays/restaurant/template1/conf";
 
 export const TEMPLATE_REGISTRY = {
   "restaurant-template-001": {
     id: "restaurant-template-001",
     name: "Bella Vista Restaurant Template",
     category: "restaurant",
-    router: RestaurantTemplate1Router,
+    conf: restaurantTemplate1Conf,
   },
 
   "transport-template-001": {

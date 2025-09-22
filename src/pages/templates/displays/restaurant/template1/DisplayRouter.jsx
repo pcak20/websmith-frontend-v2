@@ -1,5 +1,4 @@
-// src/pages/templates/restaurant/index.js
-import React, { lazy, Suspense } from "react";
+import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 
 // Lazy load template pages for better performance
@@ -27,7 +26,7 @@ const PageLoader = () => (
 );
 
 // Restaurant Template Router Component
-const RestaurantTemplate1Router = ({ websiteData, templateId }) => {
+const DisplayRouter = ({ websiteData, templateId }) => {
   return (
     <Suspense fallback={<PageLoader />}>
       <Routes>
@@ -235,4 +234,4 @@ export const RESTAURANT_TEMPLATE_CONFIG = {
   ],
 };
 
-export default RestaurantTemplate1Router;
+export default DisplayRouter;

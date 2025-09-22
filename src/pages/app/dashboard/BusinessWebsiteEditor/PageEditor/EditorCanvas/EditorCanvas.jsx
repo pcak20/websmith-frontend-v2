@@ -1,13 +1,16 @@
-import React from "react";
 import styles from "./EditorCanvas.module.css";
-import MockpageContent from "../MockPageContent/MockPageContent";
 
-function EditorCanvas({ previewDevice = "" }) {
+function EditorCanvas({ conf, previewDevice }) {
+  const { EditorRouter, currentTemplatePage, properties } = conf;
+
   return (
     <div className={styles.editorCanvas}>
       <div className={`${styles.canvasContainer} ${styles[previewDevice]}`}>
         <div className={styles.canvasContent}>
-          <MockpageContent />
+          <EditorRouter
+            currentPage={currentTemplatePage}
+            theme={properties.theme}
+          />
         </div>
       </div>
     </div>

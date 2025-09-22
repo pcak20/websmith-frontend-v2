@@ -2,14 +2,9 @@ import styles from "./EditorHeader.module.css";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Save, Eye, Settings } from "lucide-react";
 
-function EditorHeader({
-  currentWebsite,
-  currentTemplatePage,
-  unsavedChanges,
-  onPreview,
-  onSaveChanges,
-}) {
+function EditorHeader({ conf }) {
   const navigate = useNavigate();
+  const { currentWebsite, currentTemplatePage, unsavedChanges } = conf;
 
   return (
     <div className={styles.editorHeader}>
@@ -38,7 +33,7 @@ function EditorHeader({
               Unsaved changes
             </span>
           )}
-          <button className={styles.headerBtn} onClick={onPreview}>
+          <button className={styles.headerBtn} onClick={() => {}}>
             <Eye size={18} />
             Preview
           </button>
@@ -46,7 +41,7 @@ function EditorHeader({
             <Settings size={18} />
             Settings
           </button>
-          <button className={styles.primaryBtn} onClick={onSaveChanges}>
+          <button className={styles.primaryBtn} onClick={() => {}}>
             <Save size={18} />
             Save & Publish
           </button>

@@ -49,6 +49,10 @@
   z-index: 1000;
 }
 
+.restaurantHomepage.contained .restaurantHeader {
+  position: sticky;
+}
+
 .headerContent {
   display: flex;
   justify-content: space-between;
@@ -85,103 +89,6 @@
   display: flex;
   align-items: center;
   gap: 16px;
-}
-
-/* Theme Selector */
-.themeSelector {
-  position: relative;
-}
-
-.themeButton {
-  background: none;
-  border: 2px solid var(--primary-color);
-  color: var(--primary-color);
-  border-radius: 12px;
-  padding: 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.2s ease;
-}
-
-.themeButton:hover {
-  background: var(--primary-color);
-  color: white;
-}
-
-.themeDropdown {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-  padding: 20px;
-  min-width: 280px;
-  z-index: 1001;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.themeDropdown h3 {
-  margin-bottom: 16px;
-  color: #1f2937;
-  font-size: 18px;
-}
-
-.themeGrid {
-  display: grid;
-  gap: 12px;
-  max-height: 300px;
-  overflow-y: auto;
-}
-
-.themeCard {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px;
-  border-radius: 12px;
-  cursor: pointer;
-  border: 2px solid transparent;
-  transition: all 0.2s ease;
-}
-
-.themeCard:hover {
-  background: #f9fafb;
-  border-color: #e5e7eb;
-}
-
-.themeCard.active {
-  background: #fef3c7;
-  border-color: var(--primary-color);
-}
-
-.themeColors {
-  display: flex;
-  gap: 4px;
-}
-
-.themeColor {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  border: 2px solid white;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
-}
-
-.themeInfo h4 {
-  font-weight: 600;
-  color: #1f2937;
-  margin-bottom: 2px;
-  font-size: 14px;
-}
-
-.themeInfo p {
-  font-size: 12px;
-  color: #6b7280;
-  line-height: 1.3;
 }
 
 .cartBtn {
@@ -453,6 +360,10 @@
   position: sticky;
   top: 80px;
   z-index: 100;
+}
+
+.restaurantHomepage.contained .menuCategories {
+  top: 0;
 }
 
 .categoriesScroll {
@@ -1156,115 +1067,219 @@
   transform: translateY(-1px);
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .heroContent {
-    grid-template-columns: 1fr;
-    gap: 60px;
-    text-align: center;
-  }
+/* ===== CONTAINER RESPONSIVE CLASSES ===== */
 
-  .aboutContent {
-    grid-template-columns: 1fr;
-    gap: 60px;
-  }
-
-  .footerContent {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-  }
+/* Tablet Responsive (Container width < 768px) */
+.restaurantHomepage.tablet .heroContent {
+  grid-template-columns: 1fr;
+  gap: 60px;
+  text-align: center;
+  padding-top: 40px;
 }
 
-@media (max-width: 768px) {
-  .mainNav {
-    display: none;
-  }
-
-  .heroText h1 {
-    font-size: 3rem;
-  }
-
-  .heroStats {
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .heroActions {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .dishesGrid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .categoriesScroll {
-    gap: 12px;
-  }
-
-  .categoryBtn {
-    padding: 10px 16px;
-    font-size: 14px;
-  }
-
-  .footerContent {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-
-  .footerBottom {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .aboutStats {
-    gap: 16px;
-  }
-
-  .themeDropdown {
-    right: -20px;
-    left: -20px;
-    min-width: auto;
-  }
-
-  .themeGrid {
-    max-height: 250px;
-  }
+.restaurantHomepage.tablet .heroText h1 {
+  font-size: 3rem;
 }
 
-@media (max-width: 480px) {
-  .container {
-    padding: 0 16px;
-  }
+.restaurantHomepage.tablet .hero {
+  min-height: 80vh;
+}
 
-  .heroText h1 {
-    font-size: 2.5rem;
-  }
+.restaurantHomepage.tablet .mainNav {
+  display: none;
+}
 
-  .sectionHeader h2 {
-    font-size: 2rem;
-  }
+.restaurantHomepage.tablet .dishesGrid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
 
-  .heroInfo {
-    padding: 24px;
-  }
+.restaurantHomepage.tablet .aboutContent {
+  grid-template-columns: 1fr;
+  gap: 60px;
+  text-align: center;
+}
 
-  .deliveryOptions {
-    flex-direction: column;
-  }
+.restaurantHomepage.tablet .footerContent {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
 
-  .dishInfo {
-    padding: 20px;
-  }
+.restaurantHomepage.tablet .heroStats {
+  justify-content: center;
+  gap: 24px;
+}
 
-  .floatingCart {
-    left: 16px;
-    right: 16px;
-  }
+.restaurantHomepage.tablet .categoriesScroll {
+  gap: 12px;
+}
 
-  .themeDropdown {
-    right: -16px;
-    left: -16px;
-  }
+.restaurantHomepage.tablet .categoryBtn {
+  padding: 10px 16px;
+  font-size: 14px;
+}
+
+.restaurantHomepage.tablet .heroInfo,
+.restaurantHomepage.tablet .aboutImage {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Mobile Responsive (Container width < 480px) */
+.restaurantHomepage.mobile .container {
+  padding: 0 16px;
+}
+
+.restaurantHomepage.mobile .heroContent {
+  grid-template-columns: 1fr;
+  gap: 40px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.restaurantHomepage.mobile .heroText h1 {
+  font-size: 2.5rem;
+}
+
+.restaurantHomepage.mobile .hero {
+  min-height: 70vh;
+}
+
+.restaurantHomepage.mobile .tagline {
+  font-size: 1.2rem;
+}
+
+.restaurantHomepage.mobile .description {
+  font-size: 1rem;
+}
+
+.restaurantHomepage.mobile .heroStats {
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.restaurantHomepage.mobile .heroActions {
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.restaurantHomepage.mobile .btnPrimary,
+.restaurantHomepage.mobile .btnSecondary {
+  width: 100%;
+  justify-content: center;
+}
+
+.restaurantHomepage.mobile .mainNav {
+  display: none;
+}
+
+.restaurantHomepage.mobile .dishesGrid {
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.restaurantHomepage.mobile .sectionHeader h2 {
+  font-size: 2rem;
+}
+
+.restaurantHomepage.mobile .heroInfo {
+  padding: 24px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.restaurantHomepage.mobile .deliveryOptions {
+  flex-direction: column;
+}
+
+.restaurantHomepage.mobile .dishInfo {
+  padding: 20px;
+}
+
+.restaurantHomepage.mobile .dishCard {
+  margin: 0 auto;
+  max-width: 400px;
+}
+
+.restaurantHomepage.mobile .footerContent {
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+
+.restaurantHomepage.mobile .footerBottom {
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+}
+
+.restaurantHomepage.mobile .aboutStats {
+  gap: 16px;
+}
+
+.restaurantHomepage.mobile .aboutContent {
+  grid-template-columns: 1fr;
+  gap: 40px;
+  text-align: center;
+}
+
+.restaurantHomepage.mobile .aboutText h2 {
+  font-size: 2rem;
+}
+
+.restaurantHomepage.mobile .floatingCart {
+  left: 16px;
+  right: 16px;
+}
+
+.restaurantHomepage.mobile .headerContent {
+  padding: 12px 0;
+}
+
+.restaurantHomepage.mobile .logo {
+  font-size: 20px;
+}
+
+.restaurantHomepage.mobile .cartBtn {
+  padding: 10px 16px;
+}
+
+.restaurantHomepage.mobile .cartBtn .cartTotal {
+  display: none; /* Hide price text on mobile */
+}
+
+.restaurantHomepage.mobile .featuredDishes {
+  padding: 40px 0;
+}
+
+.restaurantHomepage.mobile .aboutSection {
+  padding: 40px 0;
+}
+
+/* Container Responsive Utilities */
+.restaurantHomepage.contained {
+  /* Optimizations for contained environments */
+  position: relative;
+  height: auto;
+  min-height: auto;
+}
+
+.restaurantHomepage.contained .hero {
+  min-height: 60vh;
+  padding-bottom: 40px;
+}
+
+.restaurantHomepage.contained .floatingCart {
+  position: absolute;
+  bottom: 0;
+  transform: translateY(100%);
+}
+
+/* Ensure theme variables are properly inherited in contained mode */
+.restaurantHomepage.contained {
+  --primary-color: var(--primary-color, #d97706);
+  --secondary-color: var(--secondary-color, #f59e0b);
+  --accent-color: var(--accent-color, #fbbf24);
+  --highlight-color: var(--highlight-color, #dc2626);
 }

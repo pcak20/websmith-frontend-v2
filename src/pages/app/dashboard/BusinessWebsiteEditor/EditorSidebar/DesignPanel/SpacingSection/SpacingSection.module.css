@@ -1,0 +1,40 @@
+.section {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 16px 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.sectionHeader:hover {
+  background-color: #f9fafb;
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.sectionContent {
+  padding: 0 20px 20px 20px;
+}
+
+.comingSoon {
+  padding: 20px;
+  text-align: center;
+  color: #6b7280;
+  font-style: italic;
+  background-color: #f9fafb;
+  border-radius: 6px;
+}
