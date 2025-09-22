@@ -137,3 +137,22 @@
     justify-content: space-between;
   }
 }
+
+.publishBtn {
+  background: #10b981;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.publishBtn:hover {
+  background: #059669;
+  transform: translateY(-1px);
+}

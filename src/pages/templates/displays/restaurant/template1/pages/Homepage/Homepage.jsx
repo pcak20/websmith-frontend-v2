@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import styles from "./HomePage.module.css";
 import conf from "../../conf";
+import Text from "../../../../../../../components/editables/Text/Text";
 
 const HomePage = ({
   theme,
@@ -273,7 +274,7 @@ const HomePage = ({
           <div className={styles.headerContent}>
             <div className={styles.logo}>
               <ChefHat size={28} />
-              <span>{restaurantInfo.name}</span>
+              <Text elementType={"span"}>{restaurantInfo.name}</Text>
             </div>
             <nav className={styles.mainNav}>
               <a href="#menu">Menu</a>

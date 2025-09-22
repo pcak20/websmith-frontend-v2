@@ -166,6 +166,20 @@ const TextEditModal = ({ isOpen, onClose, textData, onSave }) => {
     }
   }, [isOpen]);
 
+  // Handle escape key to close modal
+  React.useEffect(() => {
+    const handleEscapeKey = (event) => {
+      if (event.key === "Escape" && isOpen) {
+        handleCancel();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("keydown", handleEscapeKey);
+      return () => document.removeEventListener("keydown", handleEscapeKey);
+    }
+  }, [isOpen]);
+
   // Get preview element type for rendering
   const PreviewElement = elementType;
 
@@ -176,15 +190,20 @@ const TextEditModal = ({ isOpen, onClose, textData, onSave }) => {
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <div className={styles.modalHeader}>
           <h3>Edit Text</h3>
-          <button className={styles.closeButton} onClick={onClose}>
+          <button
+            className={styles.closeButton}
+            onClick={onClose}
+            aria-label="Close modal"
+          >
             ×
           </button>
         </div>
 
         <div className={styles.modalContent}>
           <div className={styles.formGroup}>
-            <label>Content:</label>
+            <label htmlFor="content-textarea">Content:</label>
             <textarea
+              id="content-textarea"
               value={content}
               onChange={(e) => handleContentChange(e.target.value)}
               className={styles.textarea}
@@ -199,6 +218,7 @@ const TextEditModal = ({ isOpen, onClose, textData, onSave }) => {
               className={styles.toggleButton}
               onClick={() => setShowAdvanced(!showAdvanced)}
               type="button"
+              aria-expanded={showAdvanced}
             >
               Advanced Options
               <span
@@ -216,8 +236,9 @@ const TextEditModal = ({ isOpen, onClose, textData, onSave }) => {
             <div className={styles.advancedOptions}>
               {/* Element Type Selection */}
               <div className={styles.formGroup}>
-                <label>Element Type:</label>
+                <label htmlFor="element-type-select">Element Type:</label>
                 <select
+                  id="element-type-select"
                   value={elementType}
                   onChange={(e) => handleElementTypeChange(e.target.value)}
                   className={styles.selectInput}
@@ -238,8 +259,9 @@ const TextEditModal = ({ isOpen, onClose, textData, onSave }) => {
 
               <div className={styles.formRow}>
                 <div className={styles.formGroup}>
-                  <label>Font Size:</label>
+                  <label htmlFor="font-size-input">Font Size:</label>
                   <input
+                    id="font-size-input"
                     type="number"
                     value={fontSize}
                     onChange={(e) => handleFontSizeChange(e.target.value)}
@@ -249,8 +271,9 @@ const TextEditModal = ({ isOpen, onClose, textData, onSave }) => {
                   />
                 </div>
                 <div className={styles.formGroup}>
-                  <label>Color:</label>
+                  <label htmlFor="color-input">Color:</label>
                   <input
+                    id="color-input"
                     type="color"
                     value={color}
                     onChange={(e) => handleColorChange(e.target.value)}
@@ -261,8 +284,9 @@ const TextEditModal = ({ isOpen, onClose, textData, onSave }) => {
 
               <div className={styles.formRow}>
                 <div className={styles.formGroup}>
-                  <label>Font Weight:</label>
+                  <label htmlFor="font-weight-select">Font Weight:</label>
                   <select
+                    id="font-weight-select"
                     value={fontWeight}
                     onChange={(e) => handleFontWeightChange(e.target.value)}
                     className={styles.selectInput}
@@ -281,8 +305,9 @@ const TextEditModal = ({ isOpen, onClose, textData, onSave }) => {
                   </select>
                 </div>
                 <div className={styles.formGroup}>
-                  <label>Font Family:</label>
+                  <label htmlFor="font-family-select">Font Family:</label>
                   <select
+                    id="font-family-select"
                     value={fontFamily}
                     onChange={(e) => handleFontFamilyChange(e.target.value)}
                     className={styles.selectInput}
@@ -325,6 +350,7 @@ const TextEditModal = ({ isOpen, onClose, textData, onSave }) => {
           )}
 
           <div className={styles.preview}>
+            <p>Preview:</p>
             <div
               className={styles.previewContent}
               style={{

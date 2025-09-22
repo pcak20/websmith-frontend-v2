@@ -6,6 +6,8 @@ import useTemplate from "./useTemplate";
 export const useEditor = (templateId) => {
   const templateData = useTemplate(templateId);
 
+  const [isAdvancedOpen, setIsAdvancedOpen] = useState(false);
+
   const [properties, setProperties] = useState({
     theme: "default",
   });
@@ -30,6 +32,14 @@ export const useEditor = (templateId) => {
     templateData.availablePages[0]
   );
 
+  const handleCurrentTemplatePageChange = (newPage) => {
+    setCurrentTemplatePage(newPage);
+  };
+
+  const handleAdvanceToggle = (isOpen) => {
+    setIsAdvancedOpen(isOpen);
+  };
+
   return {
     websiteFeatures,
     handleFeatureToggle,
@@ -37,11 +47,13 @@ export const useEditor = (templateId) => {
     showFeaturesModal,
     currentTemplatePage,
     setShowFeaturesModal,
-    setCurrentTemplatePage,
+    handleCurrentTemplatePageChange,
     currentWebsite,
     loading,
     properties,
     handlePropertiesChange,
+    isAdvancedOpen,
+    handleAdvanceToggle,
     ...templateData,
   };
 };

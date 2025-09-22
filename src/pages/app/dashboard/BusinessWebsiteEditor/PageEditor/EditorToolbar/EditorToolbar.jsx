@@ -1,42 +1,27 @@
-import { useState } from "react";
 import styles from "./EditorToolbar.module.css";
-import {
-  Save,
-  Eye,
-  Globe,
-  Smartphone,
-  Monitor,
-  Tablet,
-  Undo,
-  Redo,
-} from "lucide-react";
+import { Save, Smartphone, Monitor, Tablet } from "lucide-react";
 import PageSelector from "./PageSelector/PageSelector";
+import NextPrevButtons from "./NextPrevButtons/NextPrevButtons";
+import AdvancedSettingsButton from "./AdvancedSettingsButton/AdvancedSettingsButton";
 
 function EditorToolbar({ conf, previewDevice, setPreviewDevice }) {
   const {
     currentTemplatePage,
     unsavedChanges,
-    setCurrentTemplatePage,
+    handleCurrentTemplatePageChange,
     availablePages,
   } = conf;
-
-  const [isPreviewMode, setIsPreviewMode] = useState(false);
 
   return (
     <div className={styles.editorToolbar}>
       <div className={styles.toolbarLeft}>
         <PageSelector
-          onCurrentTemplatePageChange={setCurrentTemplatePage}
+          onCurrentTemplatePageChange={handleCurrentTemplatePageChange}
           currentTemplatePage={currentTemplatePage}
           availablePages={availablePages}
         />
         <div className={styles.toolbarDivider}></div>
-        <button className={styles.toolbarBtn} title="Undo">
-          <Undo size={16} />
-        </button>
-        <button className={styles.toolbarBtn} title="Redo">
-          <Redo size={16} />
-        </button>
+        <NextPrevButtons conf={conf} />
       </div>
 
       <div className={styles.toolbarCenter}>
@@ -72,18 +57,7 @@ function EditorToolbar({ conf, previewDevice, setPreviewDevice }) {
       </div>
 
       <div className={styles.toolbarRight}>
-        <button
-          className={styles.toolbarBtn}
-          onClick={() => setIsPreviewMode(!isPreviewMode)}
-          title="Toggle Preview Mode"
-        >
-          <Eye size={16} />
-          {isPreviewMode ? "Edit" : "Preview"}
-        </button>
-        <button className={styles.publishBtn} onClick={() => {}}>
-          <Globe size={16} />
-          Preview Live
-        </button>
+        <AdvancedSettingsButton conf={conf} />
         <button
           className={styles.saveBtn}
           onClick={() => {}}

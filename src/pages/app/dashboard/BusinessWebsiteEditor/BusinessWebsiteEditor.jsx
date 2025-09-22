@@ -22,7 +22,7 @@ const BusinessWebsiteEditor = () => {
 
       {/* Editor Content */}
       <div className={styles.editorContent}>
-        <EditorSidebar conf={editorConf} />
+        {editorConf.isAdvancedOpen && <EditorSidebar conf={editorConf} />}
         <PageEditor conf={editorConf} />
       </div>
 

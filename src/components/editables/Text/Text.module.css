@@ -9,45 +9,37 @@
   display: inline-block;
   min-width: 20px;
   min-height: 20px;
+  z-index: 10;
 }
 
 .textElement:hover {
   background: rgba(59, 130, 246, 0.1);
   outline: 2px dashed #3b82f6;
+  transition: all 0.02s ease;
   outline-offset: 2px;
 }
 
-.textElement:hover::after {
-  content: "✏️ Click to edit";
-  position: absolute;
-  top: -35px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #1f2937;
-  color: white;
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: 500;
-  white-space: nowrap;
-  z-index: 2147483646;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  pointer-events: none;
+/* Disabled state */
+.textElement.disabled {
+  cursor: default;
+  opacity: 0.6;
 }
 
-.textElement:hover::before {
-  content: "";
-  position: absolute;
-  top: -5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 5px solid #1f2937;
-  z-index: 2147483646;
-  pointer-events: none;
+.textElement.disabled:hover {
+  background: transparent;
+  outline: none;
+}
+
+/* Focus styles for accessibility */
+.textElement:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.textElement:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
 }
 
 /* Heading Elements */
@@ -125,66 +117,82 @@
 }
 
 /* Special hover states for block elements */
-.heading1:hover,
-.heading2:hover,
-.heading3:hover,
-.heading4:hover,
-.heading5:hover,
-.heading6:hover,
-.divElement:hover,
-.blockquoteElement:hover {
+.heading1:hover:not(.disabled),
+.heading2:hover:not(.disabled),
+.heading3:hover:not(.disabled),
+.heading4:hover:not(.disabled),
+.heading5:hover:not(.disabled),
+.heading6:hover:not(.disabled),
+.divElement:hover:not(.disabled),
+.blockquoteElement:hover:not(.disabled) {
   margin: 0.5em -4px;
   padding: 8px;
 }
 
-/* Adjust tooltip for different element types */
-.heading1:hover::after {
-  content: "✏️ Click to edit heading";
-}
-.heading2:hover::after {
-  content: "✏️ Click to edit heading";
-}
-.heading3:hover::after {
-  content: "✏️ Click to edit heading";
-}
-.heading4:hover::after {
-  content: "✏️ Click to edit heading";
-}
-.heading5:hover::after {
-  content: "✏️ Click to edit heading";
-}
-.heading6:hover::after {
-  content: "✏️ Click to edit heading";
-}
-.spanElement:hover::after {
-  content: "✏️ Click to edit span";
-}
-.divElement:hover::after {
-  content: "✏️ Click to edit div";
-}
-.blockquoteElement:hover::after {
-  content: "✏️ Click to edit quote";
-}
-.labelElement:hover::after {
-  content: "✏️ Click to edit label";
-}
-
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .textElement:hover::after {
-    font-size: 11px;
-    padding: 4px 8px;
+  .textElement {
+    /* Mobile-specific adjustments */
+    padding: 6px;
+    margin: -6px;
+  }
+
+  .textElement:hover:not(.disabled) {
+    outline-width: 1px;
+  }
+}
+
+@media (max-width: 480px) {
+  .textElement {
+    padding: 8px;
+    margin: -8px;
   }
 }
 
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
-  .textElement:hover {
+  .textElement:hover:not(.disabled) {
+    background: rgba(59, 130, 246, 0.2);
+  }
+
+  .textElement:focus:not(.disabled) {
     background: rgba(59, 130, 246, 0.2);
   }
 
   .blockquoteElement {
     border-left-color: #60a5fa;
     background: rgba(59, 130, 246, 0.1);
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .textElement:hover:not(.disabled) {
+    outline: 3px solid;
+    outline-offset: 3px;
+  }
+
+  .textElement:focus:not(.disabled) {
+    outline: 3px solid;
+    outline-offset: 3px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .textElement {
+    transition: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .textElement {
+    cursor: default;
+  }
+
+  .textElement:hover {
+    background: transparent;
+    outline: none;
   }
 }

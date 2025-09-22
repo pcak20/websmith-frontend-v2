@@ -1,6 +1,8 @@
 import styles from "./EditorHeader.module.css";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Save, Eye, Settings } from "lucide-react";
+import { ArrowLeft, Save, Globe } from "lucide-react";
+import AdvancedSettingsButton from "../PageEditor/EditorToolbar/AdvancedSettingsButton/AdvancedSettingsButton";
+import UndoRedoButtons from "./UndoRedoButtons/UndoRedoButtons";
 
 function EditorHeader({ conf }) {
   const navigate = useNavigate();
@@ -16,6 +18,9 @@ function EditorHeader({ conf }) {
           <ArrowLeft size={20} />
           Back to Website
         </button>
+
+        {/* Navigation Buttons */}
+
         <div className={styles.headerInfo}>
           <h1>{currentWebsite?.name || "Website Editor"}</h1>
           <span className={styles.headerSubtitle}>
@@ -33,14 +38,14 @@ function EditorHeader({ conf }) {
               Unsaved changes
             </span>
           )}
-          <button className={styles.headerBtn} onClick={() => {}}>
-            <Eye size={18} />
-            Preview
+
+          <UndoRedoButtons />
+
+          <button className={styles.publishBtn} onClick={() => {}}>
+            <Globe size={16} />
+            Preview Live
           </button>
-          <button className={styles.headerBtn}>
-            <Settings size={18} />
-            Settings
-          </button>
+
           <button className={styles.primaryBtn} onClick={() => {}}>
             <Save size={18} />
             Save & Publish

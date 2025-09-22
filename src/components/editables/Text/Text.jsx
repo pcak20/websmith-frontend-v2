@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { createPortal } from "react-dom";
 import TextEditModal from "../modals/TextEditModal/TextEditModal";
+import Tooltip from "../../UI/Tooltip/Tooltip";
 import styles from "./Text.module.css";
 
 const Text = ({
@@ -7,6 +9,8 @@ const Text = ({
   className = "",
   elementType = "p",
   onChange,
+  disabled = false,
+  tooltipDelay = 300,
   ...props
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,7 +24,9 @@ const Text = ({
   });
 
   const handleClick = () => {
-    setIsModalOpen(true);
+    if (!disabled) {
+      setIsModalOpen(true);
+    }
   };
 
   const handleSave = (updatedData) => {
@@ -75,24 +81,74 @@ const Text = ({
     }
   };
 
+  // Get tooltip text based on element type
+  const getTooltipText = (type) => {
+    switch (type) {
+      case "h1":
+      case "h2":
+      case "h3":
+      case "h4":
+      case "h5":
+      case "h6":
+        return "✏️ Click to edit heading";
+      case "span":
+        return "✏️ Click to edit span";
+      case "div":
+        return "✏️ Click to edit div";
+      case "blockquote":
+        return "✏️ Click to edit quote";
+      case "label":
+        return "✏️ Click to edit label";
+      default:
+        return `✏️ Click to edit ${type}`;
+    }
+  };
+
+  const tooltipContent = disabled ? null : getTooltipText(ElementType);
+
   return (
     <>
-      <ElementType
-        {...props}
-        className={`${getElementClass(ElementType)} ${className}`}
-        style={dynamicStyles}
-        onClick={handleClick}
-        title={`Click to edit ${ElementType}`}
+      <Tooltip
+        content={tooltipContent}
+        position="top"
+        delay={tooltipDelay}
+        disabled={disabled || isModalOpen}
       >
-        {textData.content}
-      </ElementType>
+        <ElementType
+          {...props}
+          className={`${getElementClass(ElementType)} ${className} ${
+            disabled ? styles.disabled : ""
+          }`}
+          style={dynamicStyles}
+          onClick={handleClick}
+          role={disabled ? undefined : "button"}
+          tabIndex={disabled ? undefined : 0}
+          onKeyDown={
+            disabled
+              ? undefined
+              : (e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    handleClick();
+                  }
+                }
+          }
+        >
+          {textData.content}
+        </ElementType>
+      </Tooltip>
 
-      <TextEditModal
-        isOpen={isModalOpen}
-        textData={textData}
-        onClose={handleCloseModal}
-        onSave={handleSave}
-      />
+      {/* Render modal using portal to escape stacking context */}
+      {isModalOpen &&
+        createPortal(
+          <TextEditModal
+            isOpen={isModalOpen}
+            textData={textData}
+            onClose={handleCloseModal}
+            onSave={handleSave}
+          />,
+          document.body
+        )}
     </>
   );
 };
