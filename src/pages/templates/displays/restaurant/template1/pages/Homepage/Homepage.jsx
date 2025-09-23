@@ -22,6 +22,7 @@ import {
 import styles from "./HomePage.module.css";
 import conf from "../../conf";
 import Text from "../../../../../../../components/editables/Text/Text";
+import IconSelector from "../../../../../../../components/editables/IconSelector/IconSelector";
 
 const HomePage = ({
   theme,
@@ -273,7 +274,8 @@ const HomePage = ({
         <div className={styles.container}>
           <div className={styles.headerContent}>
             <div className={styles.logo}>
-              <ChefHat size={28} />
+              {/* <ChefHat size={28} /> */}
+              <IconSelector initialIcon="ChefHat" initialSize={28} />
               <Text elementType={"span"}>{restaurantInfo.name}</Text>
             </div>
             <nav className={styles.mainNav}>
