@@ -1,28 +1,11 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
-import {
-  ShoppingCart,
-  Plus,
-  Minus,
-  Star,
-  Clock,
-  MapPin,
-  Phone,
-  Truck,
-  Store,
-  Heart,
-  Eye,
-  Award,
-  Users,
-  ChefHat,
-  Utensils,
-  Instagram,
-  Facebook,
-  Twitter,
-} from "lucide-react";
 import styles from "./HomePage.module.css";
 import conf from "../../conf";
-import Text from "../../../../../../../components/editables/Text/Text";
-import IconSelector from "../../../../../../../components/editables/IconSelector/IconSelector";
+import Navbar from "../../components/Navbar/Navbar";
+import HeroSection from "./sections/HeroSection/HeroSection";
+import MenuSection from "./sections/MenuSection/MenuSection";
+import AboutSection from "./sections/AboutSection/AboutSection";
+import Footer from "../../components/Footer/Footer";
 
 const HomePage = ({
   theme,
@@ -51,7 +34,6 @@ const HomePage = ({
       }
     };
 
-    // Use ResizeObserver if available, fallback to window resize
     if (window.ResizeObserver && containerRef.current) {
       const resizeObserver = new ResizeObserver(updateSize);
       resizeObserver.observe(containerRef.current);
@@ -65,7 +47,6 @@ const HomePage = ({
 
   // Apply theme to CSS custom properties
   useEffect(() => {
-    // Apply to container element if contained, otherwise to document root
     const root =
       isContained && containerRef.current
         ? containerRef.current
@@ -79,19 +60,16 @@ const HomePage = ({
 
   // Determine responsive class based on container width or viewport mode
   const getResponsiveClass = () => {
-    // If explicit container width is provided, use it
     if (containerWidth) {
       if (containerWidth < 480) return "mobile";
       if (containerWidth < 768) return "tablet";
       return "desktop";
     }
 
-    // If viewport mode is explicitly set (for editor controls)
     if (viewportMode !== "desktop") {
       return viewportMode;
     }
 
-    // Otherwise use observed container size
     const width = containerSize.width || window.innerWidth;
     if (width < 480) return "mobile";
     if (width < 768) return "tablet";
@@ -100,7 +78,7 @@ const HomePage = ({
 
   const responsiveClass = getResponsiveClass();
 
-  // Default restaurant info with ability to override via props
+  // Default restaurant info
   const defaultRestaurantInfo = {
     name: "Bella Vista",
     tagline: "Authentic Italian Cuisine",
@@ -118,7 +96,7 @@ const HomePage = ({
 
   const restaurantInfo = { ...defaultRestaurantInfo, ...restaurantData };
 
-  // Default menu data with ability to override via props
+  // Default menu data
   const defaultFeaturedDishes = [
     {
       id: 1,
@@ -199,17 +177,18 @@ const HomePage = ({
   ];
 
   const defaultCategories = [
-    { id: "featured", name: "Featured", icon: <Star size={20} /> },
-    { id: "pizza", name: "Pizza", icon: <Utensils size={20} /> },
-    { id: "pasta", name: "Pasta", icon: <ChefHat size={20} /> },
-    { id: "mains", name: "Main Courses", icon: <Utensils size={20} /> },
-    { id: "appetizers", name: "Appetizers", icon: <Utensils size={20} /> },
-    { id: "desserts", name: "Desserts", icon: <Heart size={20} /> },
+    { id: "featured", name: "Featured", icon: "Star" },
+    { id: "pizza", name: "Pizza", icon: "Utensils" },
+    { id: "pasta", name: "Pasta", icon: "ChefHat" },
+    { id: "mains", name: "Main Courses", icon: "Utensils" },
+    { id: "appetizers", name: "Appetizers", icon: "Utensils" },
+    { id: "desserts", name: "Desserts", icon: "Heart" },
   ];
 
   const featuredDishes = menuData.dishes || defaultFeaturedDishes;
   const categories = menuData.categories || defaultCategories;
 
+  // Cart functions
   const addToCart = (dish) => {
     setCartItems((prev) => {
       const existingItem = prev.find((item) => item.id === dish.id);
@@ -257,10 +236,11 @@ const HomePage = ({
     return cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
   };
 
-  const filteredDishes =
-    selectedCategory === "featured"
-      ? featuredDishes
-      : featuredDishes.filter((dish) => dish.category === selectedCategory);
+  const commonProps = {
+    responsiveClass,
+    isContained,
+    restaurantInfo,
+  };
 
   return (
     <div
@@ -269,403 +249,34 @@ const HomePage = ({
         isContained ? styles.contained : ""
       }`}
     >
-      {/* Header */}
-      <header className={styles.restaurantHeader}>
-        <div className={styles.container}>
-          <div className={styles.headerContent}>
-            <div className={styles.logo}>
-              {/* <ChefHat size={28} /> */}
-              <IconSelector initialIcon="ChefHat" initialSize={28} />
-              <Text elementType={"span"}>{restaurantInfo.name}</Text>
-            </div>
-            <nav className={styles.mainNav}>
-              <a href="#menu">Menu</a>
-              <a href="#about">About</a>
-              <a href="#contact">Contact</a>
-              <a href="#reviews">Reviews</a>
-            </nav>
-            <div className={styles.headerActions}>
-              <button className={styles.cartBtn}>
-                <ShoppingCart size={20} />
-                <span className={styles.cartCount}>{getTotalItems()}</span>
-                <span className={styles.cartTotal}>
-                  ${getTotalPrice().toFixed(2)}
-                </span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Navbar
+        {...commonProps}
+        cartItems={cartItems}
+        getTotalItems={getTotalItems}
+        getTotalPrice={getTotalPrice}
+      />
 
-      {/* Hero Section */}
-      <section className={styles.hero}>
-        <div className={styles.heroBg}>
-          <div className={styles.heroOverlay}></div>
-          <div className={styles.heroImage}></div>
-        </div>
-        <div className={styles.container}>
-          <div className={styles.heroContent}>
-            <div className={styles.heroText}>
-              <h1>{restaurantInfo.name}</h1>
-              <p className={styles.tagline}>{restaurantInfo.tagline}</p>
-              <p className={styles.description}>{restaurantInfo.description}</p>
+      <HeroSection {...commonProps} />
 
-              <div className={styles.heroStats}>
-                <div className={styles.stat}>
-                  <Star size={20} fill="currentColor" />
-                  <span>{restaurantInfo.rating}</span>
-                  <span className={styles.reviews}>
-                    ({restaurantInfo.reviews} reviews)
-                  </span>
-                </div>
-                <div className={styles.stat}>
-                  <Clock size={20} />
-                  <span>{restaurantInfo.deliveryTime}</span>
-                </div>
-                <div className={styles.stat}>
-                  <Truck size={20} />
-                  <span>${restaurantInfo.deliveryFee} delivery</span>
-                </div>
-              </div>
+      <MenuSection
+        {...commonProps}
+        featuredDishes={featuredDishes}
+        categories={categories}
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
+        favorites={favorites}
+        addToCart={addToCart}
+        updateQuantity={updateQuantity}
+        toggleFavorite={toggleFavorite}
+        getItemQuantity={getItemQuantity}
+        cartItems={cartItems}
+        getTotalItems={getTotalItems}
+        getTotalPrice={getTotalPrice}
+      />
 
-              <div className={styles.heroActions}>
-                <button className={`${styles.btnPrimary} ${styles.orderNow}`}>
-                  <Utensils size={20} />
-                  Order Now
-                </button>
-                <button className={styles.btnSecondary}>
-                  <Eye size={20} />
-                  View Menu
-                </button>
-              </div>
-            </div>
+      <AboutSection {...commonProps} />
 
-            <div className={styles.heroInfo}>
-              <div className={styles.infoCard}>
-                <div className={styles.deliveryOptions}>
-                  <div className={`${styles.option} ${styles.active}`}>
-                    <Truck size={20} />
-                    <div>
-                      <span>Delivery</span>
-                      <small>{restaurantInfo.deliveryTime}</small>
-                    </div>
-                  </div>
-                  <div className={styles.option}>
-                    <Store size={20} />
-                    <div>
-                      <span>Pickup</span>
-                      <small>15-20 mins</small>
-                    </div>
-                  </div>
-                </div>
-
-                <div className={styles.restaurantDetails}>
-                  <div className={styles.detail}>
-                    <MapPin size={16} />
-                    <span>{restaurantInfo.address}</span>
-                  </div>
-                  <div className={styles.detail}>
-                    <Clock size={16} />
-                    <span>{restaurantInfo.hours}</span>
-                  </div>
-                  <div className={styles.detail}>
-                    <Phone size={16} />
-                    <span>{restaurantInfo.phone}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Menu Categories */}
-      <section className={styles.menuCategories}>
-        <div className={styles.container}>
-          <div className={styles.categoriesScroll}>
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                className={`${styles.categoryBtn} ${
-                  selectedCategory === category.id ? styles.active : ""
-                }`}
-                onClick={() => setSelectedCategory(category.id)}
-              >
-                {category.icon}
-                <span>{category.name}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Dishes */}
-      <section id="menu" className={styles.featuredDishes}>
-        <div className={styles.container}>
-          <div className={styles.sectionHeader}>
-            <h2>
-              {selectedCategory === "featured"
-                ? "Featured Dishes"
-                : categories.find((c) => c.id === selectedCategory)?.name}
-            </h2>
-            <p>Handpicked favorites from our kitchen</p>
-          </div>
-
-          <div className={styles.dishesGrid}>
-            {filteredDishes.map((dish) => (
-              <div key={dish.id} className={styles.dishCard}>
-                {dish.isPopular && (
-                  <div className={`${styles.badge} ${styles.popular}`}>
-                    Popular
-                  </div>
-                )}
-                {dish.isNew && (
-                  <div className={`${styles.badge} ${styles.new}`}>New</div>
-                )}
-                {dish.originalPrice && (
-                  <div className={`${styles.badge} ${styles.sale}`}>Sale</div>
-                )}
-
-                <div className={styles.dishImage}>
-                  <div
-                    className={`${styles.foodImage} ${styles[dish.image]}`}
-                  ></div>
-                  <button
-                    className={`${styles.favoriteBtn} ${
-                      favorites.includes(dish.id) ? styles.active : ""
-                    }`}
-                    onClick={() => toggleFavorite(dish.id)}
-                  >
-                    <Heart
-                      size={20}
-                      fill={
-                        favorites.includes(dish.id) ? "currentColor" : "none"
-                      }
-                    />
-                  </button>
-                </div>
-
-                <div className={styles.dishInfo}>
-                  <div className={styles.dishHeader}>
-                    <h3>{dish.name}</h3>
-                    <div className={styles.dishRating}>
-                      <Star size={14} fill="currentColor" />
-                      <span>{dish.rating}</span>
-                      <span className={styles.reviewCount}>
-                        ({dish.reviews})
-                      </span>
-                    </div>
-                  </div>
-
-                  <p className={styles.dishDescription}>{dish.description}</p>
-
-                  <div className={styles.dishMeta}>
-                    <div className={styles.prepTime}>
-                      <Clock size={14} />
-                      <span>{dish.prepTime}</span>
-                    </div>
-                  </div>
-
-                  <div className={styles.dishFooter}>
-                    <div className={styles.priceSection}>
-                      <span className={styles.price}>${dish.price}</span>
-                      {dish.originalPrice && (
-                        <span className={styles.originalPrice}>
-                          ${dish.originalPrice}
-                        </span>
-                      )}
-                    </div>
-
-                    <div className={styles.quantityControls}>
-                      {getItemQuantity(dish.id) > 0 ? (
-                        <div className={styles.quantitySelector}>
-                          <button
-                            className={styles.quantityBtn}
-                            onClick={() => updateQuantity(dish.id, -1)}
-                          >
-                            <Minus size={16} />
-                          </button>
-                          <span className={styles.quantity}>
-                            {getItemQuantity(dish.id)}
-                          </span>
-                          <button
-                            className={styles.quantityBtn}
-                            onClick={() => updateQuantity(dish.id, 1)}
-                          >
-                            <Plus size={16} />
-                          </button>
-                        </div>
-                      ) : (
-                        <button
-                          className={styles.addBtn}
-                          onClick={() => addToCart(dish)}
-                        >
-                          <Plus size={16} />
-                          Add
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className={styles.viewAll}>
-            <button className={styles.btnSecondary}>View Full Menu</button>
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className={styles.aboutSection}>
-        <div className={styles.container}>
-          <div className={styles.aboutContent}>
-            <div className={styles.aboutText}>
-              <h2>Our Story</h2>
-              <p>
-                Founded in 1985 by the Rossi family, {restaurantInfo.name} has
-                been serving authentic Italian cuisine for over three decades.
-                Our recipes are passed down through generations, ensuring every
-                dish carries the true taste of Italy.
-              </p>
-              <p>
-                We source only the finest ingredients, from San Marzano tomatoes
-                to fresh mozzarella di bufala, creating dishes that transport
-                you straight to the heart of Italy.
-              </p>
-
-              <div className={styles.aboutStats}>
-                <div className={styles.aboutStat}>
-                  <Award size={24} />
-                  <div>
-                    <span>Award Winner</span>
-                    <small>Best Italian Restaurant 2023</small>
-                  </div>
-                </div>
-                <div className={styles.aboutStat}>
-                  <Users size={24} />
-                  <div>
-                    <span>Happy Customers</span>
-                    <small>Over 50,000 served</small>
-                  </div>
-                </div>
-                <div className={styles.aboutStat}>
-                  <ChefHat size={24} />
-                  <div>
-                    <span>Expert Chefs</span>
-                    <small>Trained in Italy</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className={styles.aboutImage}>
-              <div className={styles.chefImage}></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className={styles.restaurantFooter}>
-        <div className={styles.container}>
-          <div className={styles.footerContent}>
-            <div className={styles.footerSection}>
-              <div className={styles.footerLogo}>
-                <ChefHat size={28} />
-                <span>{restaurantInfo.name}</span>
-              </div>
-              <p>Authentic Italian cuisine made with love and tradition.</p>
-              <div className={styles.socialLinks}>
-                <a href="#" aria-label="Instagram">
-                  <Instagram size={20} />
-                </a>
-                <a href="#" aria-label="Facebook">
-                  <Facebook size={20} />
-                </a>
-                <a href="#" aria-label="Twitter">
-                  <Twitter size={20} />
-                </a>
-              </div>
-            </div>
-
-            <div className={styles.footerSection}>
-              <h4>Contact Info</h4>
-              <div className={styles.contactInfo}>
-                <div className={styles.contactItem}>
-                  <MapPin size={16} />
-                  <span>{restaurantInfo.address}</span>
-                </div>
-                <div className={styles.contactItem}>
-                  <Phone size={16} />
-                  <span>{restaurantInfo.phone}</span>
-                </div>
-                <div className={styles.contactItem}>
-                  <Clock size={16} />
-                  <span>{restaurantInfo.hours}</span>
-                </div>
-              </div>
-            </div>
-
-            <div className={styles.footerSection}>
-              <h4>Quick Links</h4>
-              <ul>
-                <li>
-                  <a href="#menu">Menu</a>
-                </li>
-                <li>
-                  <a href="#about">About Us</a>
-                </li>
-                <li>
-                  <a href="#contact">Contact</a>
-                </li>
-                <li>
-                  <a href="#reservations">Reservations</a>
-                </li>
-                <li>
-                  <a href="#catering">Catering</a>
-                </li>
-              </ul>
-            </div>
-
-            <div className={styles.footerSection}>
-              <h4>Order Online</h4>
-              <p>Get your favorite dishes delivered to your door.</p>
-              <button className={styles.footerOrderBtn}>
-                <Truck size={16} />
-                Start Order
-              </button>
-            </div>
-          </div>
-
-          <div className={styles.footerBottom}>
-            <p>&copy; 2025 {restaurantInfo.name}. All rights reserved.</p>
-            <div className={styles.footerLinks}>
-              <a href="#">Privacy Policy</a>
-              <a href="#">Terms of Service</a>
-            </div>
-          </div>
-        </div>
-      </footer>
-
-      {/* Floating Cart */}
-      {getTotalItems() > 0 && (
-        <div className={styles.floatingCart}>
-          <div className={styles.cartSummary}>
-            <div className={styles.cartInfo}>
-              <span>{getTotalItems()} items</span>
-              <span className={styles.total}>
-                ${getTotalPrice().toFixed(2)}
-              </span>
-            </div>
-            <button className={styles.checkoutBtn}>
-              <ShoppingCart size={16} />
-              View Cart
-            </button>
-          </div>
-        </div>
-      )}
+      <Footer {...commonProps} />
     </div>
   );
 };
