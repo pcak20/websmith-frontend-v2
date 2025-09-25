@@ -1,0 +1,234 @@
+/* Dish Card Component Styles */
+.dishCard {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+  max-width: 400px;
+  width: 100%;
+}
+
+.dishCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.badge.popular {
+  background: var(--highlight-color);
+  color: white;
+}
+
+.badge.new {
+  background: #10b981;
+  color: white;
+}
+
+.badge.sale {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.dishImage {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.favoriteBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #6b7280;
+  transition: all 0.2s ease;
+  z-index: 3;
+}
+
+.favoriteBtn:hover,
+.favoriteBtn.active {
+  background: white;
+  color: var(--highlight-color);
+  transform: scale(1.1);
+}
+
+/* Food Images - Dynamic based on theme colors */
+.foodImage {
+  width: 100%;
+  height: 100%;
+}
+
+.foodImage img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.dishInfo {
+  padding: 24px;
+}
+
+.dishHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.dishHeader h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.dishRating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--accent-color);
+  font-size: 14px;
+}
+
+.dishRating svg {
+  color: var(--accent-color);
+}
+
+.dishRating span {
+  color: #374151;
+  font-weight: 600;
+}
+
+.reviewCount {
+  color: #6b7280;
+  font-weight: 400;
+}
+
+.dishDescription {
+  color: #6b7280;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.dishMeta {
+  margin-bottom: 20px;
+}
+
+.prepTime {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.prepTime svg {
+  color: var(--primary-color);
+}
+
+.dishFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.priceSection {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #1f2937;
+}
+
+.originalPrice {
+  font-size: 1rem;
+  color: #6b7280;
+  text-decoration: line-through;
+}
+
+.quantityControls {
+  display: flex;
+  align-items: center;
+}
+
+.quantitySelector {
+  display: flex;
+  align-items: center;
+  background: #f3f4f6;
+  border-radius: 12px;
+  padding: 4px;
+}
+
+.quantityBtn {
+  background: white;
+  border: none;
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--primary-color);
+  transition: all 0.2s ease;
+}
+
+.quantityBtn:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.quantity {
+  padding: 0 16px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.addBtn {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--secondary-color) 100%
+  );
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.addBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}

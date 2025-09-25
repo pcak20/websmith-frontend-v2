@@ -1,10 +1,11 @@
 import React from "react";
 import { ShoppingCart, ChefHat } from "lucide-react";
 import styles from "./Navbar.module.css";
+import TextElement from "../../../../../../../components/editables/TextElement/TextElement";
+import IconElement from "../../../../../../../components/editables/IconElement/IconElement";
 
 const Navbar = ({
   responsiveClass,
-  isContained,
   restaurantInfo,
   cartItems,
   getTotalItems,
@@ -15,8 +16,10 @@ const Navbar = ({
       <div className={styles.container}>
         <div className={styles.headerContent}>
           <div className={styles.logo}>
-            <ChefHat size={28} />
-            <span>{restaurantInfo.name}</span>
+            <IconElement isEdit={false} size={28} iconId={"chefHat"} />
+            <TextElement isEdit={false} textElement="span">
+              {restaurantInfo.name}
+            </TextElement>
           </div>
 
           <nav className={styles.mainNav}>

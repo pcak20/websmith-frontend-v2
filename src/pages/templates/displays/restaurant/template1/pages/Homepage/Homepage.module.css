@@ -93,18 +93,3 @@
   width: 100%;
   justify-content: center;
 }
-
-/* Container Responsive Utilities */
-.restaurantHomepage.contained {
-  position: relative;
-  height: auto;
-  min-height: auto;
-}
-
-/* Ensure theme variables are properly inherited in contained mode */
-.restaurantHomepage.contained {
-  --primary-color: var(--primary-color, #d97706);
-  --secondary-color: var(--secondary-color, #f59e0b);
-  --accent-color: var(--accent-color, #fbbf24);
-  --highlight-color: var(--highlight-color, #dc2626);
-}

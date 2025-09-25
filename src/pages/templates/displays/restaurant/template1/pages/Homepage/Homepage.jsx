@@ -11,7 +11,6 @@ const HomePage = ({
   theme,
   restaurantData = {},
   menuData = {},
-  isContained = false,
   containerWidth = null,
   viewportMode = "desktop",
 }) => {
@@ -47,16 +46,15 @@ const HomePage = ({
 
   // Apply theme to CSS custom properties
   useEffect(() => {
-    const root =
-      isContained && containerRef.current
-        ? containerRef.current
-        : document.documentElement;
+    const root = containerRef.current
+      ? containerRef.current
+      : document.documentElement;
 
     root.style.setProperty("--primary-color", currentTheme.primary);
     root.style.setProperty("--secondary-color", currentTheme.secondary);
     root.style.setProperty("--accent-color", currentTheme.accent);
     root.style.setProperty("--highlight-color", currentTheme.highlight);
-  }, [currentTheme, isContained]);
+  }, [currentTheme]);
 
   // Determine responsive class based on container width or viewport mode
   const getResponsiveClass = () => {
@@ -105,7 +103,8 @@ const HomePage = ({
         "Fresh mozzarella, tomato sauce, basil, extra virgin olive oil",
       price: 18.99,
       originalPrice: 22.99,
-      image: "margheritaPizza",
+      image:
+        "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bWFyZ2FyaXRhJTIwcGl6emF8ZW58MHx8MHx8fDA%3D",
       category: "pizza",
       rating: 4.9,
       reviews: 156,
@@ -118,7 +117,8 @@ const HomePage = ({
       description:
         "Grilled chicken breast with creamy alfredo sauce over fettuccine",
       price: 24.99,
-      image: "chickenAlfredo",
+      image:
+        "https://images.unsplash.com/photo-1645112411341-6c4fd023714a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Q2hpY2tlbiUyMEFsZnJlZG98ZW58MHx8MHx8fDA%3D",
       category: "pasta",
       rating: 4.7,
       reviews: 89,
@@ -131,7 +131,8 @@ const HomePage = ({
       description:
         "Crisp romaine lettuce, parmesan cheese, croutons, caesar dressing",
       price: 14.99,
-      image: "caesarSalad",
+      image:
+        "https://images.unsplash.com/photo-1599021419847-d8a7a6aba5b4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Q2Flc2FyJTIwU2FsYWR8ZW58MHx8MHx8fDA%3D",
       category: "salads",
       rating: 4.6,
       reviews: 67,
@@ -143,7 +144,8 @@ const HomePage = ({
       description:
         "Classic Italian dessert with coffee-soaked ladyfingers and mascarpone",
       price: 8.99,
-      image: "tiramisu",
+      image:
+        "https://images.unsplash.com/photo-1691688334265-7936fb8c49ba?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       category: "desserts",
       rating: 4.8,
       reviews: 124,
@@ -156,7 +158,8 @@ const HomePage = ({
       description:
         "Creamy arborio rice with fresh shrimp, scallops, and mussels",
       price: 28.99,
-      image: "seafoodRisotto",
+      image:
+        "https://images.unsplash.com/photo-1726514730505-498992196c96?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       category: "mains",
       rating: 4.9,
       reviews: 93,
@@ -168,7 +171,8 @@ const HomePage = ({
       description:
         "Toasted bread topped with fresh tomatoes, garlic, and basil",
       price: 9.99,
-      image: "bruschetta",
+      image:
+        "https://images.unsplash.com/photo-1630230596557-ad07b433f5c0?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       category: "appetizers",
       rating: 4.5,
       reviews: 45,
@@ -238,16 +242,13 @@ const HomePage = ({
 
   const commonProps = {
     responsiveClass,
-    isContained,
     restaurantInfo,
   };
 
   return (
     <div
       ref={containerRef}
-      className={`${styles.restaurantHomepage} ${styles[responsiveClass]} ${
-        isContained ? styles.contained : ""
-      }`}
+      className={`${styles.restaurantHomepage} ${styles[responsiveClass]}`}
     >
       <Navbar
         {...commonProps}

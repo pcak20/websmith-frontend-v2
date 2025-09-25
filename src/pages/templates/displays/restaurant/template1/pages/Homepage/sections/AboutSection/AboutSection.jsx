@@ -2,7 +2,7 @@ import React from "react";
 import { Award, Users, ChefHat } from "lucide-react";
 import styles from "./AboutSection.module.css";
 
-const AboutSection = ({ responsiveClass, isContained, restaurantInfo }) => {
+const AboutSection = ({ responsiveClass, restaurantInfo }) => {
   return (
     <section
       id="about"

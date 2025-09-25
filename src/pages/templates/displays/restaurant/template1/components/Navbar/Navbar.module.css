@@ -10,11 +10,6 @@
   z-index: 1000;
 }
 
-/* Contained mode header */
-.restaurantHeader.contained {
-  position: sticky;
-}
-
 .headerContent {
   display: flex;
   justify-content: space-between;

@@ -1,0 +1,601 @@
+{
+  "version": "1.0.0",
+  "lastModified": "2025-09-23T10:30:00Z",
+  "templateId": "restaurant-template-001",
+  "userId": "user_123456",
+  "global": {
+    "brandName": "Bella Vista Restaurant",
+    "theme": {
+      "primaryColor": "#d97706",
+      "secondaryColor": "#059669",
+      "accentColor": "#dc2626",
+      "backgroundColor": "#ffffff",
+      "textColor": "#1f2937",
+      "linkColor": "#2563eb",
+      "fontFamily": "Inter, sans-serif",
+      "borderRadius": "0.5rem",
+      "shadowStyle": "0 4px 6px -1px rgba(0, 0, 0, 0.1)"
+    },
+    "businessInfo": {
+      "address": {
+        "street": "123 Main Street",
+        "city": "Downtown",
+        "state": "CA",
+        "zipCode": "90210",
+        "country": "USA"
+      },
+      "contact": {
+        "phoneNumber": "+1 (555) 123-4567",
+        "email": "info@bellavista.com",
+        "website": "https://bellavista.com"
+      },
+      "hours": {
+        "monday": {
+          "open": "11:00",
+          "close": "22:00",
+          "isClosed": false
+        },
+        "tuesday": {
+          "open": "11:00",
+          "close": "22:00",
+          "isClosed": false
+        },
+        "wednesday": {
+          "open": "11:00",
+          "close": "22:00",
+          "isClosed": false
+        },
+        "thursday": {
+          "open": "11:00",
+          "close": "22:00",
+          "isClosed": false
+        },
+        "friday": {
+          "open": "11:00",
+          "close": "23:00",
+          "isClosed": false
+        },
+        "saturday": {
+          "open": "10:00",
+          "close": "23:00",
+          "isClosed": false
+        },
+        "sunday": {
+          "open": "10:00",
+          "close": "21:00",
+          "isClosed": false
+        }
+      },
+      "specialHours": {
+        "holidays": [
+          {
+            "date": "2025-12-25",
+            "name": "Christmas Day",
+            "hours": null
+          },
+          {
+            "date": "2025-01-01",
+            "name": "New Year's Day",
+            "hours": {
+              "open": "12:00",
+              "close": "18:00"
+            }
+          }
+        ]
+      }
+    },
+    "seo": {
+      "title": "Bella Vista Restaurant - Authentic Italian Cuisine",
+      "description": "Experience the finest Italian dining with fresh ingredients and authentic flavors in the heart of Downtown.",
+      "keywords": [
+        "italian restaurant",
+        "fine dining",
+        "pasta",
+        "pizza",
+        "downtown restaurant"
+      ],
+      "favicon": "/images/favicon.ico",
+      "ogImage": "/images/og-image.jpg"
+    },
+    "socialMedia": {
+      "facebook": "https://facebook.com/bellavista",
+      "instagram": "https://instagram.com/bellavista",
+      "twitter": "https://twitter.com/bellavista",
+      "linkedin": "",
+      "youtube": "",
+      "tiktok": "https://tiktok.com/@bellavista"
+    },
+    "settings": {
+      "enableOnlineOrdering": true,
+      "enableReservations": true,
+      "enableDelivery": true,
+      "enablePickup": true,
+      "currency": "USD",
+      "timezone": "America/Los_Angeles",
+      "language": "en"
+    }
+  },
+  "navigation": {
+    "mainMenu": [
+      {
+        "id": "nav-home",
+        "label": "Home",
+        "pageId": "homepage",
+        "isVisible": true,
+        "order": 1
+      },
+      {
+        "id": "nav-menu",
+        "label": "Menu",
+        "pageId": "menupage",
+        "isVisible": true,
+        "order": 2
+      },
+      {
+        "id": "nav-about",
+        "label": "About",
+        "pageId": "aboutpage",
+        "isVisible": true,
+        "order": 3
+      },
+      {
+        "id": "nav-gallery",
+        "label": "Gallery",
+        "pageId": "gallerypage",
+        "isVisible": true,
+        "order": 4
+      },
+      {
+        "id": "nav-contact",
+        "label": "Contact",
+        "pageId": "contactpage",
+        "isVisible": true,
+        "order": 5
+      },
+      {
+        "id": "nav-reservation",
+        "label": "Reservations",
+        "pageId": "reservationpage",
+        "isVisible": true,
+        "order": 6
+      }
+    ]
+  },
+  "pages": {
+    "homepage": {
+      "id": "homepage",
+      "name": "Homepage",
+      "isActive": true,
+      "seo": {
+        "title": "Welcome to Bella Vista - Authentic Italian Dining",
+        "description": "Experience culinary excellence with our authentic Italian cuisine, fresh ingredients, and warm atmosphere.",
+        "keywords": [
+          "homepage",
+          "italian restaurant",
+          "bella vista",
+          "fine dining"
+        ]
+      },
+      "sections": {
+        "navbar": {
+          "id": "navbar",
+          "name": "Navigation Bar",
+          "type": "navbar",
+          "isVisible": true,
+          "backgroundColor": "#ffffff",
+          "padding": "1rem 2rem",
+          "components": [
+            {
+              "id": "logo-icon",
+              "type": "icon",
+              "iconName": "utensils",
+              "size": "xl",
+              "color": "#d97706",
+              "margin": "0 0.5rem 0 0"
+            },
+            {
+              "id": "logo-text",
+              "type": "text",
+              "content": "{{brandName}}",
+              "fontSize": "2xl",
+              "fontWeight": "bold",
+              "color": "#1f2937"
+            }
+          ],
+          "layout": "flex",
+          "alignment": "left"
+        },
+        "heroSection": {
+          "id": "hero-section",
+          "name": "Hero Section",
+          "type": "hero",
+          "isVisible": true,
+          "backgroundColor": "#1f2937",
+          "backgroundImage": "/images/hero-restaurant-bg.jpg",
+          "padding": "8rem 2rem 6rem 2rem",
+          "maxWidth": "100%",
+          "components": [
+            {
+              "id": "hero-background-image",
+              "type": "image",
+              "src": "/images/hero-restaurant-bg.jpg",
+              "alt": "Beautiful restaurant interior with elegant dining setup",
+              "width": "100%",
+              "height": "100vh",
+              "objectFit": "cover"
+            },
+            {
+              "id": "hero-main-text",
+              "type": "text",
+              "content": "Welcome to {{brandName}}",
+              "fontSize": "6xl",
+              "fontWeight": "bold",
+              "color": "#ffffff",
+              "alignment": "center",
+              "margin": "0 0 1.5rem 0"
+            },
+            {
+              "id": "hero-subtext",
+              "type": "text",
+              "content": "Experience culinary excellence in every bite",
+              "fontSize": "2xl",
+              "fontWeight": "medium",
+              "color": "#f3f4f6",
+              "alignment": "center",
+              "margin": "0 0 1rem 0"
+            },
+            {
+              "id": "hero-small-text",
+              "type": "text",
+              "content": "Fresh ingredients, authentic flavors, unforgettable moments",
+              "fontSize": "lg",
+              "fontWeight": "normal",
+              "color": "#d1d5db",
+              "alignment": "center",
+              "margin": "0 0 2rem 0"
+            },
+            {
+              "id": "hero-cta-button",
+              "type": "button",
+              "text": "View Our Menu",
+              "variant": "primary",
+              "size": "lg",
+              "action": "navigate",
+              "link": "/menu",
+              "margin": "0 auto"
+            }
+          ],
+          "layout": "single-column",
+          "alignment": "center",
+          "spacing": "normal"
+        },
+        "menuSection": {
+          "id": "menu-section",
+          "name": "Menu Preview Section",
+          "type": "menu-preview",
+          "isVisible": true,
+          "backgroundColor": "#f9fafb",
+          "padding": "4rem 2rem",
+          "maxWidth": "1200px",
+          "components": [
+            {
+              "id": "menu-main-text",
+              "type": "text",
+              "content": "Our Featured Menu",
+              "fontSize": "4xl",
+              "fontWeight": "bold",
+              "color": "#1f2937",
+              "alignment": "center",
+              "margin": "0 0 1rem 0"
+            },
+            {
+              "id": "menu-subtext",
+              "type": "text",
+              "content": "Discover our chef's special selections crafted with passion and the finest ingredients",
+              "fontSize": "xl",
+              "fontWeight": "normal",
+              "color": "#6b7280",
+              "alignment": "center",
+              "margin": "0 0 2rem 0"
+            },
+            {
+              "id": "menu-cta-button",
+              "type": "button",
+              "text": "Explore Full Menu",
+              "variant": "secondary",
+              "size": "base",
+              "action": "navigate",
+              "link": "/menu"
+            }
+          ],
+          "layout": "single-column",
+          "alignment": "center",
+          "spacing": "normal"
+        },
+        "aboutSection": {
+          "id": "about-section",
+          "name": "About Section",
+          "type": "about-preview",
+          "isVisible": true,
+          "backgroundColor": "#ffffff",
+          "padding": "4rem 2rem",
+          "maxWidth": "1200px",
+          "components": [
+            {
+              "id": "about-header",
+              "type": "text",
+              "content": "About {{brandName}}",
+              "fontSize": "4xl",
+              "fontWeight": "bold",
+              "color": "#1f2937",
+              "alignment": "center",
+              "margin": "0 0 1.5rem 0"
+            },
+            {
+              "id": "about-main-text",
+              "type": "text",
+              "content": "We are passionate about bringing you the finest dining experience with fresh ingredients and authentic flavors that have been passed down through generations. Our commitment to excellence and warm hospitality makes every visit memorable.",
+              "fontSize": "lg",
+              "fontWeight": "normal",
+              "color": "#374151",
+              "alignment": "center",
+              "margin": "0 0 2rem 0"
+            },
+            {
+              "id": "about-cta-button",
+              "type": "button",
+              "text": "Learn More About Us",
+              "variant": "outline",
+              "size": "base",
+              "action": "navigate",
+              "link": "/about"
+            }
+          ],
+          "layout": "single-column",
+          "alignment": "center",
+          "spacing": "normal"
+        },
+        "footer": {
+          "id": "footer",
+          "name": "Footer",
+          "type": "footer",
+          "isVisible": true,
+          "backgroundColor": "#1f2937",
+          "padding": "3rem 2rem 1rem 2rem",
+          "components": [
+            {
+              "id": "footer-subtext",
+              "type": "text",
+              "content": "{{brandName}} - Serving excellence since our beginning",
+              "fontSize": "lg",
+              "fontWeight": "medium",
+              "color": "#d1d5db",
+              "alignment": "center",
+              "margin": "0 0 2rem 0"
+            },
+            {
+              "id": "footer-address",
+              "type": "text",
+              "content": "{{businessInfo.address.street}}, {{businessInfo.address.city}}, {{businessInfo.address.state}} {{businessInfo.address.zipCode}}",
+              "fontSize": "base",
+              "fontWeight": "normal",
+              "color": "#9ca3af",
+              "alignment": "center",
+              "margin": "0 0 0.5rem 0"
+            },
+            {
+              "id": "footer-phone",
+              "type": "text",
+              "content": "Phone: {{businessInfo.contact.phoneNumber}}",
+              "fontSize": "base",
+              "fontWeight": "normal",
+              "color": "#9ca3af",
+              "alignment": "center",
+              "margin": "0 0 0.5rem 0"
+            },
+            {
+              "id": "footer-hours",
+              "type": "text",
+              "content": "Hours: {{businessInfo.hours.monday.open}} - {{businessInfo.hours.monday.close}} Daily",
+              "fontSize": "base",
+              "fontWeight": "normal",
+              "color": "#9ca3af",
+              "alignment": "center",
+              "margin": "0 0 1rem 0"
+            },
+            {
+              "id": "footer-online-ordering",
+              "type": "text",
+              "content": "Order online for pickup and delivery • Make reservations",
+              "fontSize": "sm",
+              "fontWeight": "normal",
+              "color": "#60a5fa",
+              "alignment": "center",
+              "margin": "0 0 1rem 0"
+            },
+            {
+              "id": "footer-copyright",
+              "type": "text",
+              "content": "© 2025 {{brandName}}. All rights reserved.",
+              "fontSize": "sm",
+              "fontWeight": "normal",
+              "color": "#6b7280",
+              "alignment": "center"
+            }
+          ],
+          "layout": "single-column",
+          "alignment": "center",
+          "spacing": "tight"
+        }
+      }
+    },
+    "aboutpage": {
+      "id": "aboutpage",
+      "name": "About Page",
+      "isActive": true,
+      "seo": {
+        "title": "About Us - {{brandName}}",
+        "description": "Learn about our story, values, and commitment to exceptional dining.",
+        "keywords": [
+          "about us",
+          "restaurant story",
+          "chef",
+          "team"
+        ]
+      },
+      "sections": {
+        "navbar": {},
+        "footer": {}
+      }
+    },
+    "accountpage": {
+      "id": "accountpage",
+      "name": "Account Page",
+      "isActive": true,
+      "seo": {
+        "title": "My Account - {{brandName}}",
+        "description": "Manage your account, view order history, and update preferences.",
+        "keywords": [
+          "account",
+          "profile",
+          "order history"
+        ]
+      },
+      "sections": {
+        "navbar": {},
+        "footer": {}
+      }
+    },
+    "cartpage": {
+      "id": "cartpage",
+      "name": "Cart Page",
+      "isActive": true,
+      "seo": {
+        "title": "Shopping Cart - {{brandName}}",
+        "description": "Review your order and proceed to checkout.",
+        "keywords": [
+          "cart",
+          "order",
+          "checkout"
+        ]
+      },
+      "sections": {
+        "navbar": {},
+        "footer": {}
+      }
+    },
+    "checkoutpage": {
+      "id": "checkoutpage",
+      "name": "Checkout Page",
+      "isActive": true,
+      "seo": {
+        "title": "Checkout - {{brandName}}",
+        "description": "Complete your order with secure payment options.",
+        "keywords": [
+          "checkout",
+          "payment",
+          "order completion"
+        ]
+      },
+      "sections": {
+        "navbar": {},
+        "footer": {}
+      }
+    },
+    "contactpage": {
+      "id": "contactpage",
+      "name": "Contact Page",
+      "isActive": true,
+      "seo": {
+        "title": "Contact Us - {{brandName}}",
+        "description": "Get in touch with us for reservations, inquiries, or feedback.",
+        "keywords": [
+          "contact",
+          "location",
+          "hours",
+          "phone"
+        ]
+      },
+      "sections": {
+        "navbar": {},
+        "footer": {}
+      }
+    },
+    "gallerypage": {
+      "id": "gallerypage",
+      "name": "Gallery Page",
+      "isActive": true,
+      "seo": {
+        "title": "Gallery - {{brandName}}",
+        "description": "View photos of our restaurant, dishes, and dining experience.",
+        "keywords": [
+          "gallery",
+          "photos",
+          "restaurant interior",
+          "food photos"
+        ]
+      },
+      "sections": {
+        "navbar": {},
+        "footer": {}
+      }
+    },
+    "menupage": {
+      "id": "menupage",
+      "name": "Menu Page",
+      "isActive": true,
+      "seo": {
+        "title": "Menu - {{brandName}}",
+        "description": "Explore our full menu of authentic Italian dishes and specialties.",
+        "keywords": [
+          "menu",
+          "food",
+          "dishes",
+          "prices",
+          "italian cuisine"
+        ]
+      },
+      "sections": {
+        "navbar": {},
+        "footer": {}
+      }
+    },
+    "ordertrackingpage": {
+      "id": "ordertrackingpage",
+      "name": "Order Tracking Page",
+      "isActive": true,
+      "seo": {
+        "title": "Track Your Order - {{brandName}}",
+        "description": "Track the status of your order in real-time.",
+        "keywords": [
+          "order tracking",
+          "delivery status",
+          "order status"
+        ]
+      },
+      "sections": {
+        "navbar": {},
+        "footer": {}
+      }
+    },
+    "reservationpage": {
+      "id": "reservationpage",
+      "name": "Reservation Page",
+      "isActive": true,
+      "seo": {
+        "title": "Make a Reservation - {{brandName}}",
+        "description": "Reserve your table for an unforgettable dining experience.",
+        "keywords": [
+          "reservations",
+          "book table",
+          "dining",
+          "restaurant booking"
+        ]
+      },
+      "sections": {
+        "navbar": {},
+        "footer": {}
+      }
+    }
+  }
+}

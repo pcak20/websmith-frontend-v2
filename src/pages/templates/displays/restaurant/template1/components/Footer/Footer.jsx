@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import styles from "./Footer.module.css";
 
-const Footer = ({ responsiveClass, isContained, restaurantInfo }) => {
+const Footer = ({ responsiveClass, restaurantInfo }) => {
   return (
     <footer className={`${styles.restaurantFooter} ${styles[responsiveClass]}`}>
       <div className={styles.container}>

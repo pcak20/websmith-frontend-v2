@@ -13,7 +13,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: -1;
+  /* z-index: -1; */
 }
 
 .heroOverlay {
@@ -33,6 +33,14 @@
 .heroImage {
   width: 100%;
   height: 100%;
+  background-color: red;
+}
+
+.heroImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 30%;
   background: linear-gradient(135deg, #1a1a1a 0%, #2d1b0e 50%, #1a1a1a 100%);
   background-image: radial-gradient(
       circle at 20% 50%,
@@ -308,10 +316,4 @@
 
 .hero.mobile .deliveryOptions {
   flex-direction: column;
-}
-
-/* Container Responsive Utilities */
-.hero.contained {
-  min-height: 60vh;
-  padding-bottom: 40px;
 }
